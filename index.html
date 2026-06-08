@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boukay Vital — One Routine. Two Moments. Every Day.</title>
+  <meta name="description" content="A premium AM/PM wellness system rooted in Caribbean botanical heritage and validated by science. Join the waitlist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────────── */
+    :root {
+      --forest:   #0e2318;
+      --forest2:  #1a3a28;
+      --forest3:  #234d35;
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c882;
+      --cream:    #f5f0e8;
+      --cream2:   #ece5d5;
+      --text:     #1a1a14;
+      --muted:    #6b6b56;
+      --white:    #ffffff;
+
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'Jost', sans-serif;
+
+      --ease-out: cubic-bezier(.16,1,.3,1);
+      --trans: .6s var(--ease-out);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─────────────────────────────────────────────
+       LANGUAGE TOGGLE
+    ───────────────────────────────────────────── */
+    #lang-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; justify-content: flex-end; align-items: center;
+      padding: .7rem 2rem;
+      background: rgba(14,35,24,.95);
+      backdrop-filter: blur(8px);
+    }
+    .lang-btn {
+      font-family: var(--ff-body);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      border: 1px solid rgba(201,168,76,.4);
+      background: transparent;
+      padding: .35rem .9rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .25s, color .25s;
+      margin-left: .5rem;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--forest); }
+    .lang-btn:hover:not(.active) { background: rgba(201,168,76,.15); }
+
+    /* ─────────────────────────────────────────────
+       LANGUAGE VISIBILITY
+    ───────────────────────────────────────────── */
+    body.lang-en  .pl { display: none !important; }
+    body.lang-pl  .en { display: none !important; }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      background: var(--forest);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      padding-top: 40px;
+    }
+
+    /* Diagonal split line */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.5) 30%, rgba(201,168,76,.5) 70%, transparent);
+      transform: rotate(3deg) scaleY(1.2);
+      pointer-events: none;
+    }
+
+    .hero-half {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem;
+      position: relative;
+    }
+    .hero-half.am {
+      background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,.12) 0%, transparent 70%),
+                  var(--forest);
+    }
+    .hero-half.pm {
+      background: radial-gradient(ellipse at 70% 40%, rgba(10,25,40,.8) 0%, transparent 70%),
+                  var(--forest2);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: .65rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s var(--ease-out) .2s forwards;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-body);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      background: rgba(201,168,76,.12);
+      border: 1px solid rgba(201,168,76,.25);
+      padding: .4rem 1rem;
+      border-radius: 2px;
+      width: fit-content;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s var(--ease-out) .4s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.6rem, 4.5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      letter-spacing: -.01em;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp .9s var(--ease-out) .35s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-lt); }
+
+    .hero-sub {
+      font-size: .92rem;
+      font-weight: 300;
+      color: rgba(245,240,232,.65);
+      max-width: 380px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s var(--ease-out) .55s forwards;
+    }
+
+    /* Pill badges */
+    .badge-row {
+      display: flex; flex-wrap: wrap; gap: .55rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp .7s var(--ease-out) .65s forwards;
+    }
+    .badge {
+      font-family: var(--ff-body);
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      border: 1px solid rgba(201,168,76,.3);
+      padding: .3rem .75rem;
+      border-radius: 20px;
+    }
+
+    /* Product icon */
+    .product-icon {
+      font-size: 5rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp .6s var(--ease-out) .1s forwards;
+    }
+
+    /* CTA section in hero */
+    .hero-cta-wrap {
+      opacity: 0;
+      animation: fadeUp .7s var(--ease-out) .75s forwards;
+    }
+    .hero-cta-wrap p {
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.4);
+      margin-bottom: 1rem;
+    }
+
+    /* ─────────────────────────────────────────────
+       FORM (shared styles)
+    ───────────────────────────────────────────── */
+    .waitlist-form {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      max-width: 440px;
+    }
+    .waitlist-form input[type="email"] {
+      flex: 1 1 220px;
+      font-family: var(--ff-body);
+      font-size: .85rem;
+      font-weight: 300;
+      padding: .85rem 1.2rem;
+      background: rgba(245,240,232,.06);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--cream);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color .25s, background .25s;
+    }
+    .waitlist-form input[type="email"]::placeholder { color: rgba(245,240,232,.3); }
+    .waitlist-form input[type="email"]:focus {
+      border-color: var(--gold);
+      background: rgba(201,168,76,.07);
+    }
+    .waitlist-form button {
+      font-family: var(--ff-body);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .85rem 1.6rem;
+      background: var(--gold);
+      color: var(--forest);
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .25s, transform .15s;
+    }
+    .waitlist-form button:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .form-note {
+      margin-top: .75rem;
+      font-size: .7rem;
+      color: rgba(245,240,232,.35);
+      letter-spacing: .05em;
+    }
+    .form-success {
+      display: none;
+      color: var(--gold-lt);
+      font-size: .85rem;
+      padding: .85rem 0;
+      letter-spacing: .05em;
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO BOTTOM TAGLINE
+    ───────────────────────────────────────────── */
+    #hero-tagline {
+      grid-column: 1 / -1;
+      background: rgba(0,0,0,.25);
+      border-top: 1px solid rgba(201,168,76,.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      padding: 1.2rem 2rem;
+      flex-wrap: wrap;
+    }
+    .tl-item {
+      font-family: var(--ff-body);
+      font-size: .62rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.7);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .tl-item span { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       SECTION SHARED
+    ───────────────────────────────────────────── */
+    section { padding: 7rem 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--ff-body);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 3.5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--forest);
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--forest3); }
+    .section-body {
+      font-size: .93rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.85;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ─────────────────────────────────────────────
+       STORY SECTION
+    ───────────────────────────────────────────── */
+    #story {
+      background: var(--cream2);
+      overflow: hidden;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .story-visual {
+      position: relative;
+    }
+    .story-card {
+      background: var(--forest);
+      border-radius: 4px;
+      padding: 3rem;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .story-card::before {
+      content: '"';
+      font-family: var(--ff-display);
+      font-size: 12rem;
+      line-height: .7;
+      color: rgba(201,168,76,.08);
+      position: absolute;
+      top: 1rem; left: 1.5rem;
+      pointer-events: none;
+    }
+    .story-card blockquote {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--cream);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.5rem;
+    }
+    .story-card cite {
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+    .story-accent {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      width: 80px; height: 80px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: .12;
+    }
+
+    .story-text .section-body { margin-bottom: 1.5rem; }
+    .story-origin {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.5rem;
+      background: white;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+      margin-top: 2rem;
+    }
+    .story-origin-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: .1rem; }
+    .story-origin-text { font-size: .83rem; color: var(--muted); line-height: 1.7; }
+    .story-origin-text strong { color: var(--forest); font-weight: 500; }
+
+    /* ─────────────────────────────────────────────
+       PRODUCTS SECTION
+    ───────────────────────────────────────────── */
+    #products { background: var(--forest); }
+    #products .section-title { color: var(--cream); }
+    #products .section-label { color: var(--gold); }
+    #products .section-body { color: rgba(245,240,232,.6); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .product-card {
+      border-radius: 4px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card.am {
+      background: linear-gradient(135deg, rgba(201,168,76,.18) 0%, rgba(14,35,24,.8) 100%),
+                  var(--forest2);
+      border: 1px solid rgba(201,168,76,.25);
+    }
+    .product-card.pm {
+      background: linear-gradient(135deg, rgba(10,20,40,.9) 0%, rgba(26,58,40,.6) 100%),
+                  var(--forest2);
+      border: 1px solid rgba(100,140,180,.2);
+    }
+    .product-time {
+      font-size: 2.8rem;
+      margin-bottom: .5rem;
+    }
+    .product-name {
+      font-family: var(--ff-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: .25rem;
+      letter-spacing: .02em;
+    }
+    .product-subtitle {
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .product-desc {
+      font-size: .88rem;
+      color: rgba(245,240,232,.65);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .ingredient-list {
+      list-style: none;
+      display: flex; flex-wrap: wrap; gap: .45rem;
+    }
+    .ingredient-list li {
+      font-size: .65rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.2);
+      padding: .28rem .65rem;
+      border-radius: 20px;
+    }
+    .product-targets {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(201,168,76,.15);
+    }
+    .product-targets p {
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.35);
+      margin-bottom: .6rem;
+    }
+    .target-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .target-pill {
+      font-size: .68rem;
+      color: rgba(245,240,232,.55);
+      background: rgba(255,255,255,.05);
+      padding: .25rem .6rem;
+      border-radius: 2px;
+    }
+
+    /* ─────────────────────────────────────────────
+       HOW IT WORKS
+    ───────────────────────────────────────────── */
+    #how { background: var(--cream); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+    .step-card {
+      padding: 2.5rem 2rem;
+      background: white;
+      border-radius: 4px;
+      border-top: 3px solid var(--gold);
+      position: relative;
+    }
+    .step-num {
+      font-family: var(--ff-display);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(201,168,76,.2);
+      line-height: 1;
+      margin-bottom: .75rem;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .step-title {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: .75rem;
+    }
+    .step-body { font-size: .85rem; color: var(--muted); line-height: 1.8; }
+
+    /* ─────────────────────────────────────────────
+       WAITLIST SECTION
+    ───────────────────────────────────────────── */
+    #waitlist {
+      background: var(--forest2);
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+    #waitlist .section-title { color: var(--cream); }
+    #waitlist .section-body {
+      color: rgba(245,240,232,.6);
+      margin: 0 auto 3rem;
+      max-width: 520px;
+    }
+    #waitlist .waitlist-form {
+      margin: 0 auto;
+      justify-content: center;
+    }
+    #waitlist .form-note { color: rgba(245,240,232,.3); text-align: center; }
+    #waitlist .form-success { justify-content: center; }
+
+    .perks-row {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem;
+      margin-top: 4rem;
+      padding-top: 4rem;
+      border-top: 1px solid rgba(201,168,76,.15);
+    }
+    .perk {
+      display: flex; align-items: center; gap: .7rem;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.7);
+    }
+    .perk-icon { font-size: 1.2rem; }
+
+    /* ─────────────────────────────────────────────
+       DISCLAIMER
+    ───────────────────────────────────────────── */
+    #disclaimer {
+      background: var(--forest);
+      padding: 3rem 2rem;
+    }
+    .disclaimer-box {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .disclaimer-box p {
+      font-size: .72rem;
+      color: rgba(245,240,232,.3);
+      line-height: 1.75;
+    }
+    .disclaimer-box p + p { margin-top: .75rem; }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer {
+      background: var(--forest);
+      border-top: 1px solid rgba(201,168,76,.12);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: .04em;
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-copy {
+      font-size: .7rem;
+      color: rgba(245,240,232,.25);
+      letter-spacing: .08em;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.35);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       LOGO wordmark in nav
+    ───────────────────────────────────────────── */
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: .06em;
+      margin-right: auto;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       KEYFRAMES
+    ───────────────────────────────────────────── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      #hero::after { display: none; }
+      .hero-half { padding: 3.5rem 2rem; }
+      .hero-half.am { padding-top: 5rem; }
+      .hero-half.pm { padding-bottom: 0; }
+      #hero-tagline { grid-column: 1; }
+      .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .products-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 560px) {
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form input[type="email"],
+      .waitlist-form button { width: 100%; flex: unset; }
+      .tl-item { font-size: .55rem; }
+      #lang-bar { padding: .6rem 1rem; }
+    }
+  </style>
+</head>
+
+<body class="lang-en">
+
+  <!-- ── LANGUAGE BAR ── -->
+  <div id="lang-bar">
+    <div class="nav-logo">Boukay <span>Vital</span></div>
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('pl')" id="btn-pl">PL</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       HERO
+  ═════════════════════════════════════════════ -->
+  <section id="hero">
+
+    <!-- AM side -->
+    <div class="hero-half am">
+      <div class="product-icon">☀️</div>
+      <div class="hero-eyebrow en">Morning · Vitality · Focus</div>
+      <div class="hero-eyebrow pl">Poranek · Witalność · Skupienie</div>
+
+      <h2 class="hero-title en"><em>TANBOU</em> AM<br>Morning Vitality</h2>
+      <h2 class="hero-title pl"><em>TANBOU</em> AM<br>Poranna Witalność</h2>
+
+      <p class="hero-sub en">Start your day with intention. A Caribbean-rooted botanical formula designed to support your energy, focus and immune function — every morning.</p>
+      <p class="hero-sub pl">Zacznij dzień z intencją. Formuła roślinna z korzeniami karaibskimi, wspierająca energię, koncentrację i odporność — każdego ranka.</p>
+
+      <div class="badge-row">
+        <span class="badge en">Energy</span>
+        <span class="badge en">Focus</span>
+        <span class="badge en">Immunity</span>
+        <span class="badge pl">Energia</span>
+        <span class="badge pl">Skupienie</span>
+        <span class="badge pl">Odporność</span>
+        <span class="badge">Moringa</span>
+        <span class="badge">Ginseng</span>
+        <span class="badge">Turmeric</span>
+      </div>
+    </div>
+
+    <!-- PM side -->
+    <div class="hero-half pm">
+      <div class="product-icon">🌙</div>
+      <div class="hero-eyebrow en">Evening · Rest · Renewal</div>
+      <div class="hero-eyebrow pl">Wieczór · Odpoczynek · Odnowa</div>
+
+      <h2 class="hero-title en"><em>ZANTRAY</em> PM<br>Evening Rest & Renewal</h2>
+      <h2 class="hero-title pl"><em>ZANTRAY</em> PM<br>Wieczorny Odpoczynek</h2>
+
+      <p class="hero-sub en">End your day with renewal. A calming botanical blend drawn from Caribbean plant wisdom, designed to support deep rest and overnight recovery.</p>
+      <p class="hero-sub pl">Zakończ dzień odnową. Kojąca mieszanka roślin karaibskich, wspierająca głęboki sen i nocną regenerację.</p>
+
+      <div class="badge-row">
+        <span class="badge en">Sleep</span>
+        <span class="badge en">Recovery</span>
+        <span class="badge en">Renewal</span>
+        <span class="badge pl">Sen</span>
+        <span class="badge pl">Regeneracja</span>
+        <span class="badge pl">Odnowa</span>
+        <span class="badge">Chamomile</span>
+        <span class="badge">Passionflower</span>
+        <span class="badge">Magnesium</span>
+      </div>
+
+      <!-- Main waitlist CTA lives here -->
+      <div class="hero-cta-wrap">
+        <p class="en">Join the founding waitlist</p>
+        <p class="pl">Dołącz do listy oczekujących</p>
+        <form class="waitlist-form" onsubmit="handleSubmit(event,'hero-success')">
+          <input type="email" id="hero-email" placeholder="your@email.com" required />
+          <button type="submit">
+            <span class="en">Join Waitlist</span>
+            <span class="pl">Dołącz</span>
+          </button>
+        </form>
+        <div class="form-success" id="hero-success">
+          ✦ <span class="en">You're on the list. We'll be in touch soon.</span>
+          <span class="pl">Jesteś na liście. Wkrótce się odezwiemy.</span>
+        </div>
+        <p class="form-note en">No spam. Early access only. Unsubscribe anytime.</p>
+        <p class="form-note pl">Zero spamu. Tylko wczesny dostęp. Rezygnacja w każdej chwili.</p>
+      </div>
+    </div>
+
+    <!-- Bottom tagline bar -->
+    <div id="hero-tagline">
+      <div class="tl-item"><span>✦</span> <span class="en">One Routine. Two Moments.</span><span class="pl">Jedna Rutyna. Dwa Momenty.</span></div>
+      <div class="tl-item"><span>✦</span> <span class="en">Caribbean Botanical Heritage</span><span class="pl">Karaibskie Dziedzictwo Roślinne</span></div>
+      <div class="tl-item"><span>✦</span> <span class="en">Science-Validated Formulation</span><span class="pl">Formuła Potwierdzona Naukowo</span></div>
+      <div class="tl-item"><span>✦</span> <span class="en">Poland-First Launch</span><span class="pl">Premiera w Polsce</span></div>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       STORY
+  ═════════════════════════════════════════════ -->
+  <section id="story">
+    <div class="container">
+      <div class="story-grid">
+
+        <div class="story-visual reveal">
+          <div class="story-card">
+            <blockquote class="en">"What if we could help people fight back before it's too late?"</blockquote>
+            <blockquote class="pl">„Co gdybyśmy mogli pomóc ludziom walczyć, zanim będzie za późno?"</blockquote>
+            <cite>Emmanuel Cherestal &amp; Yotlaire Guillou — Co-Founders, Boukay Vital</cite>
+            <div class="story-accent"></div>
+          </div>
+        </div>
+
+        <div class="story-text">
+          <p class="section-label reveal reveal-delay-1 en">Our Story</p>
+          <p class="section-label reveal reveal-delay-1 pl">Nasza Historia</p>
+
+          <h2 class="section-title reveal reveal-delay-2 en">Built from loss.<br><em>Driven by purpose.</em></h2>
+          <h2 class="section-title reveal reveal-delay-2 pl">Zbudowane ze straty.<br><em>Napędzane celem.</em></h2>
+
+          <p class="section-body reveal reveal-delay-3 en">Emmanuel and Yotlaire grew up together in Haiti, where families shared tables and grandmothers brewed remedies that worked for generations. They also shared the same devastating loss — parents taken too soon by preventable chronic disease.</p>
+          <p class="section-body reveal reveal-delay-3 pl">Emmanuel i Yotlaire dorastali razem na Haiti, gdzie rodziny dzieliły stoły, a babcie warzyły lekarstwa działające od pokoleń. Podzielili też tę samą druzgocącą stratę — rodziców zabranych za wcześnie przez choroby, którym można było zapobiec.</p>
+
+          <p class="section-body reveal reveal-delay-4 en">That question — <em>what if prevention could win?</em> — became Boukay Vital. In Haitian Creole, <em>boukay</em> evokes a gathering of natural elements: flowers, herbs, the botanical richness of the Caribbean. Paired with modern science. Built for your daily life.</p>
+          <p class="section-body reveal reveal-delay-4 pl">To pytanie — <em>co jeśli prewencja mogłaby wygrać?</em> — stało się Boukay Vital. W kreolskim haitańskim <em>boukay</em> oznacza zgromadzenie naturalnych elementów: kwiatów, ziół, botanicznego bogactwa Karaibów. Połączone z nowoczesną nauką. Zbudowane dla Twojego codziennego życia.</p>
+
+          <div class="story-origin reveal reveal-delay-4">
+            <div class="story-origin-icon">🌿</div>
+            <div class="story-origin-text">
+              <strong class="en">Caribbean roots. European standards.</strong>
+              <strong class="pl">Karaibskie korzenie. Europejskie standardy.</strong><br>
+              <span class="en">Every ingredient is selected for both ancestral wisdom and scientific evidence. Formulation reviewed by qualified experts for EU compliance and safety.</span>
+              <span class="pl">Każdy składnik wybierany jest zarówno ze względu na mądrość przodków, jak i dowody naukowe. Formuła sprawdzona przez wykwalifikowanych ekspertów pod kątem zgodności z normami UE.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       PRODUCTS
+  ═════════════════════════════════════════════ -->
+  <section id="products">
+    <div class="container">
+      <p class="section-label reveal en">The System</p>
+      <p class="section-label reveal pl">System</p>
+      <h2 class="section-title reveal reveal-delay-1 en">Two products.<br><em>One complete routine.</em></h2>
+      <h2 class="section-title reveal reveal-delay-1 pl">Dwa produkty.<br><em>Jedna kompletna rutyna.</em></h2>
+      <p class="section-body reveal reveal-delay-2 en">Most people have a drawer full of bottles and no clear plan. Boukay Vital replaces that confusion with a simple, structured day-to-night wellness system.</p>
+      <p class="section-body reveal reveal-delay-2 pl">Większość ludzi ma szufladę pełną butelek i żadnego jasnego planu. Boukay Vital zastępuje ten chaos prostym, ustrukturyzowanym systemem wellness od rana do wieczora.</p>
+
+      <div class="products-grid">
+
+        <!-- TANBOU AM -->
+        <div class="product-card am reveal reveal-delay-2">
+          <div class="product-time">☀️</div>
+          <div class="product-name">TANBOU AM</div>
+          <div class="product-subtitle en">Daily Vitality Formula — Morning</div>
+          <div class="product-subtitle pl">Formuła Codziennej Witalności — Poranek</div>
+          <p class="product-desc en">A botanical morning blend designed to support your natural energy, mental clarity, and immune function. Drawn from Caribbean plant traditions and formulated with modern precision.</p>
+          <p class="product-desc pl">Poranna mieszanka botaniczna wspierająca naturalną energię, jasność umysłu i funkcję odpornościową. Zainspirowana karaibskimi tradycjami roślinnymi, sformułowana z nowoczesną precyzją.</p>
+          <ul class="ingredient-list">
+            <li>Moringa</li><li>Guava Leaf</li><li>Panax Ginseng</li>
+            <li>Schisandra</li><li>Acerola</li><li>L-Theanine</li>
+            <li>Turmeric</li><li>Black Seed</li><li>Zinc</li>
+            <li>Selenium</li><li>Vitamin B Complex</li>
+          </ul>
+          <div class="product-targets">
+            <p class="en">Targets</p>
+            <p class="pl">Działanie</p>
+            <div class="target-row">
+              <span class="target-pill en">Energy Metabolism</span>
+              <span class="target-pill en">Focus & Clarity</span>
+              <span class="target-pill en">Immune Support</span>
+              <span class="target-pill en">Oxidative Stress</span>
+              <span class="target-pill pl">Metabolizm Energii</span>
+              <span class="target-pill pl">Skupienie</span>
+              <span class="target-pill pl">Odporność</span>
+              <span class="target-pill pl">Stres Oksydacyjny</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ZANTRAY PM -->
+        <div class="product-card pm reveal reveal-delay-3">
+          <div class="product-time">🌙</div>
+          <div class="product-name">ZANTRAY PM</div>
+          <div class="product-subtitle en">Rest & Renewal Formula — Evening</div>
+          <div class="product-subtitle pl">Formuła Odpoczynku i Odnowy — Wieczór</div>
+          <p class="product-desc en">A calming evening blend to support deep relaxation, quality sleep, and overnight cellular renewal. Rooted in Caribbean botanical wisdom, built for modern recovery.</p>
+          <p class="product-desc pl">Kojąca wieczorna mieszanka wspierająca głębokie odprężenie, jakość snu i nocną odnowę komórkową. Zakorzeniona w karaibskiej mądrości botanicznej, stworzona dla nowoczesnej regeneracji.</p>
+          <ul class="ingredient-list">
+            <li>Chamomile</li><li>Lemon Balm</li><li>Passionflower</li>
+            <li>Tamarind</li><li>Soursop Leaf</li><li>Lemongrass</li>
+            <li>Magnolia Bark</li><li>Jujube Seed</li>
+            <li>Magnesium Glycinate</li><li>D3 + K2</li>
+          </ul>
+          <div class="product-targets">
+            <p class="en">Targets</p>
+            <p class="pl">Działanie</p>
+            <div class="target-row">
+              <span class="target-pill en">Sleep Quality</span>
+              <span class="target-pill en">Relaxation & Calm</span>
+              <span class="target-pill en">Recovery & Renewal</span>
+              <span class="target-pill en">Hormonal Balance</span>
+              <span class="target-pill pl">Jakość Snu</span>
+              <span class="target-pill pl">Relaks i Spokój</span>
+              <span class="target-pill pl">Regeneracja</span>
+              <span class="target-pill pl">Równowaga Hormonalna</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       HOW IT WORKS
+  ═════════════════════════════════════════════ -->
+  <section id="how">
+    <div class="container">
+      <p class="section-label reveal en">How It Works</p>
+      <p class="section-label reveal pl">Jak To Działa</p>
+      <h2 class="section-title reveal reveal-delay-1 en">Simple by design.<br><em>Powerful by nature.</em></h2>
+      <h2 class="section-title reveal reveal-delay-1 pl">Prosto z założenia.<br><em>Potężne z natury.</em></h2>
+
+      <div class="steps-grid">
+
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <div class="step-icon">☀️</div>
+          <h3 class="step-title en">Take TANBOU AM in the morning</h3>
+          <h3 class="step-title pl">Przyjmij TANBOU AM rano</h3>
+          <p class="step-body en">Two capsules with breakfast. Your body gets the botanical support it needs to power through a full day — energy, focus, and immune resilience.</p>
+          <p class="step-body pl">Dwie kapsułki do śniadania. Twoje ciało otrzymuje botaniczne wsparcie potrzebne na cały dzień — energia, skupienie i odporność.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <div class="step-icon">🌙</div>
+          <h3 class="step-title en">Take ZANTRAY PM in the evening</h3>
+          <h3 class="step-title pl">Przyjmij ZANTRAY PM wieczorem</h3>
+          <p class="step-body en">Two capsules an hour before bed. Your body shifts into rest and renewal mode — calmer mind, deeper sleep, better recovery overnight.</p>
+          <p class="step-body pl">Dwie kapsułki godzinę przed snem. Twoje ciało przełącza się w tryb odpoczynku i odnowy — spokojniejszy umysł, głębszy sen, lepsza regeneracja.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <div class="step-icon">🔄</div>
+          <h3 class="step-title en">Repeat. Build the habit.</h3>
+          <h3 class="step-title pl">Powtarzaj. Buduj nawyk.</h3>
+          <p class="step-body en">Consistency is the key. The AM/PM structure removes the guesswork and builds a daily wellness ritual you can actually maintain. 30 days at a time.</p>
+          <p class="step-body pl">Konsekwencja to klucz. Struktura AM/PM usuwa domysły i buduje codzienny rytuał wellness, który można utrzymać. 30 dni na raz.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       WAITLIST
+  ═════════════════════════════════════════════ -->
+  <section id="waitlist">
+    <div class="container">
+      <p class="section-label reveal en">Early Access</p>
+      <p class="section-label reveal pl">Wczesny Dostęp</p>
+
+      <h2 class="section-title reveal reveal-delay-1 en">Be the first to<br><em>experience Boukay Vital.</em></h2>
+      <h2 class="section-title reveal reveal-delay-1 pl">Bądź pierwszy,<br><em>by doświadczyć Boukay Vital.</em></h2>
+
+      <p class="section-body reveal reveal-delay-2 en">We are preparing our founding pilot in Poland. Join the waitlist to get early access, founding-member pricing, and be part of the first Boukay Vital community.</p>
+      <p class="section-body reveal reveal-delay-2 pl">Przygotowujemy nasz pilotaż w Polsce. Dołącz do listy oczekujących, aby uzyskać wczesny dostęp, ceny dla członków założycieli i być częścią pierwszej społeczności Boukay Vital.</p>
+
+      <div class="reveal reveal-delay-3">
+        <form class="waitlist-form" onsubmit="handleSubmit(event,'footer-success')">
+          <input type="email" id="footer-email" placeholder="your@email.com" required />
+          <button type="submit">
+            <span class="en">Join the Waitlist</span>
+            <span class="pl">Dołącz do Listy</span>
+          </button>
+        </form>
+        <div class="form-success" id="footer-success">
+          ✦ <span class="en">You're on the list. We'll be in touch before launch.</span>
+          <span class="pl">Jesteś na liście. Odezwiemy się przed premierą.</span>
+        </div>
+        <p class="form-note en">No spam. Early access only. Unsubscribe anytime.</p>
+        <p class="form-note pl">Zero spamu. Tylko wczesny dostęp. Rezygnacja w każdej chwili.</p>
+      </div>
+
+      <div class="perks-row reveal reveal-delay-4">
+        <div class="perk">
+          <span class="perk-icon">⭐</span>
+          <span class="en">Founding Member Price</span>
+          <span class="pl">Cena Członka Założyciela</span>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">📦</span>
+          <span class="en">First Access to Pilot</span>
+          <span class="pl">Pierwszy Dostęp do Pilotażu</span>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">🌿</span>
+          <span class="en">Exclusive Origin Story</span>
+          <span class="pl">Ekskluzywna Historia Marki</span>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">✉️</span>
+          <span class="en">No spam. Ever.</span>
+          <span class="pl">Zero spamu. Nigdy.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       LEGAL DISCLAIMER
+  ═════════════════════════════════════════════ -->
+  <section id="disclaimer">
+    <div class="disclaimer-box">
+      <p class="en">* These statements have not been evaluated by the European Food Safety Authority (EFSA). This product is not intended to diagnose, treat, cure, or prevent any disease. Food supplement. Do not exceed the recommended daily dose. Not a substitute for a varied and balanced diet and a healthy lifestyle. Keep out of reach of young children. Consult a healthcare professional before use if pregnant, breastfeeding, or taking medication.</p>
+      <p class="pl">* Oświadczenia te nie zostały ocenione przez Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA). Produkt nie jest przeznaczony do diagnozowania, leczenia, łagodzenia ani zapobiegania chorobom. Suplement diety. Nie przekraczać zalecanej dziennej porcji. Suplement diety nie może zastąpić zróżnicowanej i zbilansowanej diety oraz zdrowego trybu życia. Przechowywać w miejscu niedostępnym dla małych dzieci. Przed zastosowaniem skonsultować się z lekarzem w przypadku ciąży, karmienia piersią lub przyjmowania leków.</p>
+      <p style="margin-top:1.5rem;">
+        <span class="en" style="color:rgba(245,240,232,.2); font-size:.68rem; letter-spacing:.08em;">Boukay Vital is a pre-launch brand. Products are in development. This website is for informational purposes and waitlist registration only.</span>
+        <span class="pl" style="color:rgba(245,240,232,.2); font-size:.68rem; letter-spacing:.08em;">Boukay Vital jest marką przed premierą. Produkty są w fazie rozwoju. Ta strona służy wyłącznie celom informacyjnym i rejestracji na listę oczekujących.</span>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+  ═════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Boukay <span>Vital</span></div>
+      <div class="footer-links">
+        <a href="#story" class="en">Story</a>
+        <a href="#story" class="pl">Historia</a>
+        <a href="#products" class="en">Products</a>
+        <a href="#products" class="pl">Produkty</a>
+        <a href="#waitlist" class="en">Waitlist</a>
+        <a href="#waitlist" class="pl">Lista</a>
+        <a href="mailto:hello@boukayvital.com">hello@boukayvital.com</a>
+      </div>
+      <div class="footer-copy">© 2025 Boukay Vital. All rights reserved.</div>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════
+       SCRIPTS
+  ═════════════════════════════════════════════ -->
+  <script>
+    /* ── Language toggle ── */
+    function setLang(lang) {
+      document.body.classList.remove('lang-en','lang-pl');
+      document.body.classList.add('lang-' + lang);
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
+    }
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Waitlist form ── */
+    function handleSubmit(e, successId) {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.querySelector('input[type="email"]').value;
+
+      // Here you can connect to Mailchimp / Brevo / Formspree — see README
+      // For now we just show the success message
+      form.style.display = 'none';
+      const msg = document.getElementById(successId);
+      msg.style.display = 'flex';
+
+      // Optional: log to console for testing
+      console.log('Waitlist signup:', email);
+    }
+  </script>
+
+</body>
+</html>
