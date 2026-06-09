@@ -1,0 +1,5 @@
+# Build artifacts (logo processing) — site is self-contained in index.html
+.venv/
+assets/
+.DS_Store
+index-2.html
