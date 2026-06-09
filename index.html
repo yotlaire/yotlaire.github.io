@@ -133,7 +133,7 @@
 
     /* ───────────────────────── HERO ───────────────────────── */
     #hero {
-      min-height: 100svh; padding: var(--nav-h) 2rem 0;
+      min-height: 100svh; padding: calc(var(--nav-h) + 1rem) 2rem 3.5rem;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center; position: relative; overflow: hidden;
       background: var(--forest);
@@ -143,11 +143,6 @@
     .hero-bg .am, .hero-bg .pm { position: absolute; top: 0; bottom: 0; width: 55%; }
     .hero-bg .am { left: 0;  background: radial-gradient(ellipse at 25% 55%, rgba(201,168,76,.16) 0%, transparent 60%); }
     .hero-bg .pm { right: 0; background: radial-gradient(ellipse at 75% 45%, rgba(40,80,130,.22) 0%, transparent 60%); }
-    .hero-bg::after {
-      content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.45) 28%, rgba(201,168,76,.45) 72%, transparent);
-      transform: rotate(4deg) scaleY(1.25);
-    }
     .orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; will-change: transform; }
     .orb.gold { width: 380px; height: 380px; top: 12%; left: 8%;  background: radial-gradient(circle, rgba(201,168,76,.5), transparent 70%); animation: float1 14s ease-in-out infinite; }
     .orb.blue { width: 420px; height: 420px; bottom: 8%; right: 6%; background: radial-gradient(circle, rgba(50,90,140,.45), transparent 70%); animation: float2 18s ease-in-out infinite; }
@@ -156,12 +151,12 @@
 
     .hero-inner { position: relative; z-index: 2; max-width: 860px; }
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .55rem;
-      font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold);
-      border: 1px solid rgba(201,168,76,.3); background: rgba(201,168,76,.08);
-      padding: .45rem 1.1rem; border-radius: 30px; margin-bottom: 2rem;
+      display: inline-flex; align-items: center; gap: .7rem;
+      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold-lt); background: none; border: none; padding: 0; margin-bottom: 2.2rem;
     }
-    .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+    .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: pulseDot 2.4s ease-in-out infinite; }
+    @keyframes pulseDot { 0%,100%{ box-shadow: 0 0 4px var(--gold); opacity: .7; } 50%{ box-shadow: 0 0 14px var(--gold); opacity: 1; } }
     .hero-title {
       font-family: var(--ff-display); font-weight: 300;
       font-size: clamp(3rem, 8vw, 6.6rem); line-height: 1.02; letter-spacing: -.015em;
@@ -399,12 +394,66 @@
       .js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
       .orb { display: none; }
     }
+  
+    /* ── Line icons (flat, Flaticon-style) ── */
+    .ico { width: 1em; height: 1em; display: inline-block; vertical-align: -0.18em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .duo-ico { color: var(--gold-lt); display: inline-flex; }
+    .product-time { color: var(--gold-lt); }
+    .trust-ico { color: var(--gold); }
+    .trust-ico .ico { transition: transform .45s var(--ease); }
+    .trust-card:hover .trust-ico .ico { transform: scale(1.12) rotate(-5deg); }
+    .step-icon { color: var(--gold); }
+    .perk-icon { color: var(--gold-lt); display: inline-flex; }
+    .story-origin-icon { color: var(--gold); display: inline-flex; }
+
+    /* ── Animated logo ── */
+    .nav-logo img { transition: height .4s var(--ease), transform .4s var(--ease); animation: logoIn 1s var(--ease) both, logoGlow 5.5s ease-in-out 1.3s infinite; }
+    .nav-logo:hover img { transform: scale(1.06); }
+    @keyframes logoIn { from { opacity: 0; transform: translateY(-10px) scale(.9); } to { opacity: 1; transform: none; } }
+    @keyframes logoGlow { 0%,100% { filter: drop-shadow(0 0 0 rgba(201,168,76,0)); } 50% { filter: drop-shadow(0 0 7px rgba(201,168,76,.4)); } }
+
+    /* ── Hero entrance (pure CSS — runs even if JS fails) ── */
+    .hero-eyebrow { opacity: 0; animation: heroUp .85s var(--ease) .15s forwards; }
+    .hero-title   { opacity: 0; animation: heroUp .95s var(--ease) .32s forwards; }
+    .hero-sub     { opacity: 0; animation: heroUp .85s var(--ease) .52s forwards; }
+    .hero-actions { opacity: 0; animation: heroUp .85s var(--ease) .66s forwards; }
+    .hero-micro   { opacity: 0; animation: heroUp .85s var(--ease) .78s forwards; }
+    .hero-duo     { opacity: 0; animation: heroUp .85s var(--ease) .90s forwards; }
+    @keyframes heroUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    .hero-title em { animation: emGlow 6s ease-in-out 1.6s infinite; }
+    @keyframes emGlow { 0%,100% { text-shadow: 0 0 0 rgba(226,200,130,0); } 50% { text-shadow: 0 0 26px rgba(226,200,130,.4); } }
+
+    /* ── Button shine sweep ── */
+    .btn, .nav-cta { position: relative; overflow: hidden; }
+    .btn span, .nav-cta span { position: relative; z-index: 1; }
+    .btn::after, .nav-cta::after { content: ''; position: absolute; top: 0; left: -130%; width: 55%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.38), transparent); transform: skewX(-20deg); transition: left .65s var(--ease); pointer-events: none; }
+    .btn:hover::after, .nav-cta:hover::after { left: 150%; }
+
+    /* ── Reduced motion: keep animated-in elements visible ── */
+    @media (prefers-reduced-motion: reduce) {
+      .nav-logo img, .hero-eyebrow, .hero-title, .hero-sub, .hero-actions, .hero-micro, .hero-duo { opacity: 1 !important; transform: none !important; animation: none !important; }
+    }
   </style>
 </head>
 
 <body class="lang-en">
 
   <div id="progress"></div>
+
+  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+    <defs>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 2v6.5L4.8 18a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.5V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></symbol>
+      <symbol id="i-box" viewBox="0 0 24 24"><path d="M11 21.7a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    </defs>
+  </svg>
 
   <!-- ───── NAV ───── -->
   <nav id="nav">
@@ -456,15 +505,11 @@
       <p class="hero-micro pl">Zero spamu. Tylko wczesny dostęp i ceny dla członków założycieli.</p>
 
       <div class="hero-duo">
-        <div class="duo-chip"><span class="duo-ico">☀️</span> <b>TANBOU AM</b> <span class="en">Vitality</span><span class="pl">Witalność</span></div>
-        <div class="duo-chip"><span class="duo-ico">🌙</span> <b>ZANTRAY PM</b> <span class="en">Rest &amp; Renewal</span><span class="pl">Odpoczynek i Odnowa</span></div>
+        <div class="duo-chip"><span class="duo-ico"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span> <b>TANBOU AM</b> <span class="en">Vitality</span><span class="pl">Witalność</span></div>
+        <div class="duo-chip"><span class="duo-ico"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></span> <b>ZANTRAY PM</b> <span class="en">Rest &amp; Renewal</span><span class="pl">Odpoczynek i Odnowa</span></div>
       </div>
     </div>
 
-    <div class="scroll-hint">
-      <span class="en">Scroll</span><span class="pl">Przewiń</span>
-      <span class="line"></span>
-    </div>
   </section>
 
   <!-- ───── MARQUEE ───── -->
@@ -529,7 +574,7 @@
           <p class="section-body reveal d3 pl">To pytanie — <em>co jeśli prewencja mogłaby wygrać?</em> — stało się Boukay Vital. W kreolskim haitańskim <em>boukay</em> oznacza zgromadzenie naturalnych elementów: kwiatów, ziół, botanicznego bogactwa Karaibów. Połączone z nowoczesną nauką. Zbudowane dla Twojego codziennego życia.</p>
 
           <div class="story-origin reveal d3">
-            <div class="story-origin-icon">🌿</div>
+            <div class="story-origin-icon"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></div>
             <div class="story-origin-text">
               <strong class="en">Caribbean roots. European standards.</strong>
               <strong class="pl">Karaibskie korzenie. Europejskie standardy.</strong><br>
@@ -555,7 +600,7 @@
       <div class="products-grid">
         <div class="product-card am reveal d2">
           <div class="product-badge">AM</div>
-          <div class="product-time">☀️</div>
+          <div class="product-time"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></div>
           <div class="product-name">TANBOU AM</div>
           <div class="product-subtitle en">Daily Vitality Formula — Morning</div>
           <div class="product-subtitle pl">Formuła Codziennej Witalności — Poranek</div>
@@ -585,7 +630,7 @@
 
         <div class="product-card pm reveal d3">
           <div class="product-badge">PM</div>
-          <div class="product-time">🌙</div>
+          <div class="product-time"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></div>
           <div class="product-name">ZANTRAY PM</div>
           <div class="product-subtitle en">Rest &amp; Renewal Formula — Evening</div>
           <div class="product-subtitle pl">Formuła Odpoczynku i Odnowy — Wieczór</div>
@@ -628,28 +673,28 @@
 
       <div class="trust-grid">
         <div class="trust-card reveal d1">
-          <div class="trust-ico">🌿</div>
+          <div class="trust-ico"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></div>
           <h4 class="en">Caribbean Heritage</h4>
           <h4 class="pl">Karaibskie Dziedzictwo</h4>
           <p class="en">Botanicals drawn from generations of Caribbean plant wisdom.</p>
           <p class="pl">Rośliny czerpane z pokoleń karaibskiej mądrości roślinnej.</p>
         </div>
         <div class="trust-card reveal d2">
-          <div class="trust-ico">🔬</div>
+          <div class="trust-ico"><svg class="ico" aria-hidden="true"><use href="#i-flask"/></svg></div>
           <h4 class="en">Science-Shaped</h4>
           <h4 class="pl">Ukształtowane Nauką</h4>
           <p class="en">Each formula is shaped by modern nutritional science.</p>
           <p class="pl">Każda formuła jest kształtowana przez nowoczesną naukę o żywieniu.</p>
         </div>
         <div class="trust-card reveal d3">
-          <div class="trust-ico">⚖️</div>
+          <div class="trust-ico"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div>
           <h4 class="en">EU-Compliant Language</h4>
           <h4 class="pl">Język Zgodny z UE</h4>
           <p class="en">Claims written to align with EFSA and EU food-supplement rules.</p>
           <p class="pl">Oświadczenia zgodne z zasadami EFSA i UE dla suplementów diety.</p>
         </div>
         <div class="trust-card reveal d4">
-          <div class="trust-ico">👥</div>
+          <div class="trust-ico"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div>
           <h4 class="en">Expert-Reviewed</h4>
           <h4 class="pl">Sprawdzone przez Ekspertów</h4>
           <p class="en">Formulation reviewed by qualified experts for safety.</p>
@@ -670,7 +715,7 @@
       <div class="steps-grid">
         <div class="step-card reveal d1">
           <div class="step-num">01</div>
-          <div class="step-icon">☀️</div>
+          <div class="step-icon"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></div>
           <h3 class="step-title en">Take TANBOU AM in the morning</h3>
           <h3 class="step-title pl">Przyjmij TANBOU AM rano</h3>
           <p class="step-body en">Two capsules with breakfast. Your body gets the botanical support it needs to power through a full day — energy, focus, and immune resilience.</p>
@@ -678,7 +723,7 @@
         </div>
         <div class="step-card reveal d2">
           <div class="step-num">02</div>
-          <div class="step-icon">🌙</div>
+          <div class="step-icon"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></div>
           <h3 class="step-title en">Take ZANTRAY PM in the evening</h3>
           <h3 class="step-title pl">Przyjmij ZANTRAY PM wieczorem</h3>
           <p class="step-body en">Two capsules an hour before bed. Your body shifts into rest and renewal mode — calmer mind, deeper sleep, better recovery overnight.</p>
@@ -686,7 +731,7 @@
         </div>
         <div class="step-card reveal d3">
           <div class="step-num">03</div>
-          <div class="step-icon">🔄</div>
+          <div class="step-icon"><svg class="ico" aria-hidden="true"><use href="#i-repeat"/></svg></div>
           <h3 class="step-title en">Repeat. Build the habit.</h3>
           <h3 class="step-title pl">Powtarzaj. Buduj nawyk.</h3>
           <p class="step-body en">Consistency is the key. The AM/PM structure removes the guesswork and builds a daily wellness ritual you can actually maintain. 30 days at a time.</p>
@@ -720,10 +765,10 @@
       </div>
 
       <div class="perks-row reveal d4">
-        <div class="perk"><span class="perk-icon">⭐</span><span class="en">Founding Member Price</span><span class="pl">Cena Członka Założyciela</span></div>
-        <div class="perk"><span class="perk-icon">📦</span><span class="en">First Access to Pilot</span><span class="pl">Pierwszy Dostęp do Pilotażu</span></div>
-        <div class="perk"><span class="perk-icon">🌿</span><span class="en">Exclusive Origin Story</span><span class="pl">Ekskluzywna Historia Marki</span></div>
-        <div class="perk"><span class="perk-icon">✉️</span><span class="en">No spam. Ever.</span><span class="pl">Zero spamu. Nigdy.</span></div>
+        <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><span class="en">Founding Member Price</span><span class="pl">Cena Członka Założyciela</span></div>
+        <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-box"/></svg></span><span class="en">First Access to Pilot</span><span class="pl">Pierwszy Dostęp do Pilotażu</span></div>
+        <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></span><span class="en">Exclusive Origin Story</span><span class="pl">Ekskluzywna Historia Marki</span></div>
+        <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span class="en">No spam. Ever.</span><span class="pl">Zero spamu. Nigdy.</span></div>
       </div>
     </div>
   </section>
