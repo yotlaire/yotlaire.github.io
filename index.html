@@ -481,6 +481,99 @@
     .story-card { border-radius: 22px; }
     .waitlist-form input[type="email"] { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-radius: 12px; }
     .waitlist-form button { border-radius: 12px; }
+  
+    /* ───────────── ADVISOR-BRIEF SECTIONS ───────────── */
+    #company { background: var(--cream); }
+    #faq { background: var(--cream); }
+    #updates { background: var(--cream2); }
+    #contact { background: var(--cream); }
+    #status { background: var(--forest); }
+    #status .section-title { color: var(--cream); }
+    #status .section-body { color: rgba(245,240,232,.66); }
+
+    /* Company at a glance */
+    .facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 3rem; border-top: 1px solid rgba(14,35,24,.12); }
+    .fact { display: flex; gap: 1.2rem; padding: 1.4rem .4rem; border-bottom: 1px solid rgba(14,35,24,.12); align-items: baseline; }
+    .facts-grid .fact:nth-child(odd) { border-right: 1px solid rgba(14,35,24,.12); padding-right: 1.6rem; }
+    .facts-grid .fact:nth-child(even) { padding-left: 1.6rem; }
+    .fact dt { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); min-width: 92px; flex-shrink: 0; }
+    .fact dd { font-family: var(--ff-display); font-size: 1.18rem; color: var(--forest); font-weight: 400; }
+    .fact dd a { border-bottom: 1px solid var(--gold); }
+    .fact dd a:hover { color: var(--gold); }
+    @media (max-width: 700px){ .facts-grid{ grid-template-columns: 1fr; } .facts-grid .fact:nth-child(odd){ border-right:none; padding-right:.4rem; } .facts-grid .fact:nth-child(even){ padding-left:.4rem; } }
+
+    /* Status checklist */
+    .status-list { list-style: none; margin-top: 3rem; display: grid; gap: .9rem; max-width: 640px; }
+    .status-list li { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.3rem; border-radius: 14px; background: rgba(245,240,232,.04); border: 1px solid rgba(201,168,76,.16); color: rgba(245,240,232,.82); font-size: .92rem; }
+    .status-mark { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(201,168,76,.14); color: var(--gold-lt); }
+    .status-mark .ico { width: 16px; height: 16px; }
+    .status-list li.done .status-mark { background: var(--gold); color: var(--forest); }
+    .status-list li.done { border-color: rgba(201,168,76,.4); }
+
+    /* FAQ accordion */
+    .faq-wrap { max-width: 860px; }
+    .faq-list { margin-top: 3rem; border-top: 1px solid rgba(14,35,24,.12); }
+    .faq-item { border-bottom: 1px solid rgba(14,35,24,.12); }
+    .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.4rem .2rem; font-family: var(--ff-display); font-size: 1.32rem; font-weight: 500; color: var(--forest); transition: color .25s; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--forest3); }
+    .faq-plus { position: relative; width: 18px; height: 18px; flex-shrink: 0; }
+    .faq-plus::before, .faq-plus::after { content: ''; position: absolute; background: var(--gold); border-radius: 2px; transition: transform .3s var(--ease), opacity .3s var(--ease); }
+    .faq-plus::before { top: 8px; left: 0; width: 18px; height: 2px; }
+    .faq-plus::after { left: 8px; top: 0; width: 2px; height: 18px; }
+    .faq-item[open] .faq-plus::after { transform: rotate(90deg); opacity: 0; }
+    .faq-a { padding: 0 .2rem 1.5rem; }
+    .faq-a p { font-size: .92rem; color: var(--muted); line-height: 1.85; max-width: 720px; }
+
+    /* Updates timeline */
+    .timeline { margin-top: 3rem; max-width: 720px; border-left: 2px solid rgba(201,168,76,.3); padding-left: 2rem; display: grid; gap: 2.4rem; }
+    .tl-entry { position: relative; }
+    .tl-entry::before { content: ''; position: absolute; left: calc(-2rem - 7px); top: .35rem; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px var(--cream2); }
+    .tl-date { font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+    .tl-entry h3 { font-family: var(--ff-display); font-size: 1.5rem; font-weight: 500; color: var(--forest); margin-bottom: .5rem; }
+    .tl-entry p { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+
+    /* Contact */
+    .contact-wrap { max-width: 760px; }
+    .contact-email { display: inline-block; margin-top: 1rem; font-family: var(--ff-display); font-size: 1.5rem; color: var(--forest3); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+    .contact-email:hover { color: var(--gold); }
+    .contact-form { margin-top: 2.5rem; display: grid; gap: 1.1rem; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .cf-field { display: flex; flex-direction: column; gap: .45rem; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .cf-field input, .cf-field textarea { font-family: var(--ff-body); font-size: .92rem; font-weight: 300; color: var(--text); padding: .85rem 1rem; background: var(--white); border: 1px solid rgba(14,35,24,.18); border-radius: 10px; outline: none; transition: border-color .25s, box-shadow .25s; resize: vertical; }
+    .cf-field input:focus, .cf-field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,.15); }
+    .contact-form .btn-gold { justify-self: start; }
+    .contact-meta { margin-top: 2rem; font-size: .76rem; letter-spacing: .04em; color: var(--muted); }
+    @media (max-width: 560px){ .cf-row{ grid-template-columns: 1fr; } }
+
+    /* Consent checkbox */
+    .consent { display: flex; align-items: flex-start; gap: .6rem; font-size: .76rem; line-height: 1.5; color: var(--muted); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: 300; }
+    .consent input { margin-top: .15rem; width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0; }
+    .consent a { color: var(--forest3); text-decoration: underline; }
+    .consent a:hover { color: var(--gold); }
+    .consent-wl { flex-basis: 100%; color: rgba(245,240,232,.6); justify-content: center; max-width: 440px; margin: .3rem auto 0; text-align: left; }
+    .consent-wl a { color: var(--gold-lt); }
+
+    /* Ingredient notes */
+    .ingredient-notes { margin-top: 1.6rem; display: grid; gap: .7rem; }
+    .ingredient-notes p { font-size: .8rem; color: rgba(245,240,232,.62); line-height: 1.65; }
+    .ingredient-notes b { color: var(--gold-lt); font-weight: 500; }
+    .compliance-note { margin-top: 2.5rem; font-size: .72rem; color: rgba(245,240,232,.4); text-align: center; font-style: italic; }
+
+    /* Footer links (richer) */
+    .footer-links { max-width: 680px; justify-content: center; }
+
+    /* Privacy modal */
+    .modal-overlay { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 1.5rem; background: rgba(14,35,24,.6); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .modal-overlay.open { display: flex; animation: fadeIn .3s var(--ease); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal { position: relative; max-width: 640px; width: 100%; max-height: 84vh; overflow-y: auto; background: var(--cream); border-radius: 20px; padding: 2.6rem; box-shadow: 0 40px 100px -30px rgba(0,0,0,.6); border: 1px solid rgba(201,168,76,.3); }
+    .modal h2 { font-family: var(--ff-display); font-weight: 400; font-size: 1.9rem; color: var(--forest); margin-bottom: 1.2rem; }
+    .modal-body h4 { font-family: var(--ff-body); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin: 1.3rem 0 .4rem; }
+    .modal-body p { font-size: .86rem; color: var(--muted); line-height: 1.75; }
+    .modal-body a { color: var(--forest3); text-decoration: underline; }
+    .modal-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; font-size: 1.8rem; line-height: 1; color: var(--muted); cursor: pointer; transition: color .2s; }
+    .modal-close:hover { color: var(--forest); }
   </style>
 </head>
 
@@ -500,6 +593,8 @@
       <symbol id="i-box" viewBox="0 0 24 24"><path d="M11 21.7a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
       <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
       <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 14h6M9 18h4"/></symbol>
     </defs>
   </svg>
 
@@ -507,10 +602,9 @@
   <nav id="nav">
     <a href="#hero" class="nav-logo" aria-label="Boukay Vital"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU8AAABdCAYAAAAlpOTWAAA9oklEQVR4nO19CXwb9ZX/mxmdHsse+RwfsZ07IQcEQqClXClbKCyl9KLQbaHX9u72Wihtl57bf1va0nah3R7bZbs9tvSmHIVSIBCaQAi5L8eOb3tk2dLoGJ2jmf/n/WbkyI6OGUmOnTBfkGNLo9+MpNGbd3zf9wFYsGDBggULFixYsGDBggULFixYsGDBwtkDCs5gSKLQBAC1AJBmOX5soY/HggULLx+cccZTEgVOTUdeJ8eDN8iJyOWqnGoEmlZpe81+e03Dbxl344Msx+9f6OO0YMHC2Y0zynhGxvd+Ozxx+OOxwCgo6TioGRlUVQWKogD/o20ucHpaoKZl+bi7Ze2rWY4/utDHbMGChbMTZ4TxjAcGrolMHHpU8p8AORkFJZMBChQAVSWPo/FEqGhCaRpouwvstc1Q177hp9yS89+9wIdvwYKFsxCL3ngmQiObxeGXdsXQcCYimsFETzPPkaszPymgGDvY3I3Q0HPB/fVLLnjn6T9yCxYsnM2gYZEjMnFwV8zfTwwnCc9phhhPNJHZWxZoTymKJjdVyUAiPA6hsQO3RSYOfXYBX4IFCxbOQixq4xme2PPd0Oh+UJJoOLPGMmsyT7qe6ozlzP6N3imAzWaH2NQQSFMnviKJwnkL9kIsWLBw1mHRGk9JFC4NjR3+aCYhkaIQWsOTnqZ+2GhR9RvmOzXov5GNKaBBhXhgBJLB4a8s2IuxYMHCWQcbLFJkYpPXJYNjMx6nXg7Sf9ODdc3BzPE4szjpowJNgxwXIRXxXXfaX4QFCxbOWixaz1NOhF6jJKMkf3kyRNd9T/RE1ayBVIlnOmNQcx5XVYU8VZUTICeCIE0NXL+AL8mCBQtnERal8ZREYYWciG5CHicpEuWU1nMLRCfj+Kyx1G6ANCZCZVL0x2RQUhLIifCrF+DlWLBg4SzEogzbKTXZmUnHNC4n5jPVbLh+8ucsZA2o/ke2YKR5p5gPVUGRU2hALziNL8OCBQtnMRal8VQVuRGUFCG8nyyjZ0tCFNaBZgjys56nu6JUNqxX9SIT8UgzoGRSHQvwcixYsHAWYlEaT4SWx9RCdvxP8z71jiL9x8nC0cnHSJSesw6l/63ZWnXRvl4LFiycpTlPSRS6YlN9NyGFaH4PCYCibdOUzal3Emmkd5L3nLlpxnMmF6pbU1KNz9czhVE8bcPe9+NwmhDy9b5fEoUtp2t/FixYOL0w7ImlQ8PfSYR9N9rZ5qcAYOt8HpRKOffbnHUxoOgazUqijUc/VM9n5riWxH6il6r9AhR6oVlHNKfnHfvdGVcdHvtpQSzou9NmF3slUbiV5fjx+dyXJApJAHBUuMwJAPgey/HfhdMISRQ2AcDHAeDtBp+SAIC7WI6/u0r7fy8A/Mjg5jewHP9gGfvYDAC7imzyCZbj76nC53shy/EvGjym2wDgv6u5pkEJyR0AsAIADgHA51mO/53JNbDo+4TBzf+I5xbL8YMG174CAH4PAN4im21iOX6vKc8z4uu/Meo7AelY6Eqjz5FE4RpJFHgwCZbjA47apvsZp2Y7EYSypHuhMHObcUFPVuVn7tMex/CfZhxgc3PAuBvxjSlLBg9vJrZvTMUjXdFp4SoAuAzmH5UaTsQyAPiOJAqqJAqyJAq3wDwaTEkUHsN9AcBLJgwnwgUA39CP0yeJwlsqPByjhhPx+TL3cU2Jx79dpc/3n8E4/s3gdhdDFSBp3x+/bjgR6wDgt2Us9TkT274eADaa2P4jJQwn4tbsL4aMpzR57J+j/mFISSGw0RTyf0oi6Ov9kO/E9kdD43sn9KuFKdjYtp+4OLS7ClCULjunG8bZIbxuSGnt99wwn8bHlQzY3V5wetoOsxx/2OxxxMW+16eCR55Piv1/NvE0lyLLEI8EIB4cvxHOPDAA8AtJFLZXe2FJFL6oG8zXVGG5FgD4tSQKz0qisKrMNZ6eJ0Obi93zZJTn4nET2wYMbncMqoOv5btTEgWzxvmXJrc/aGJbIxHiLlPGMzB68IeS6INUXIJ0OmnoOQ5n3YiSTsDQnsdgZPfvn/Ade2rSTL6U5fg93u4LPqPS9pze9ZPGkhhIYHRPFL/rKBii32iGCIhQNFbmGWCbl4K7eaUpaTpJFLrFoe3PCgce/sPUid2rktHwq0w8vTsZlyCZiEE06H9LORcPM2A5Ht+d2DwsfYnuHVYF+lp3GdzczH7xszlWTj6e5fgrdS+oFDawHP9Ds+vr+3hU/4zy4Q6W479U4vn43P2ltmE53own92YD3nITy/F/hergfQXuxzDeMFiO/3GR93IuVrAcf8LE2uh5fqfAw7/Q3+MZ413SEMYCA6+NTPQCGkJVlSGdiBo9kAfrW1c96nC4IOo/Ab6jzzQL+//8zOTRv4UkUTjXyBo1zRv+X0PPluO00wMZRSbfJ5rWPEoa/yNGlAGaYjRDCvi7jdyweCRnAOraz4Ha1tUfYTl+p5F9JsIjFwQHn9k9fezhwane7a9KhKbB6eGBbVqKeTlDSCVCW1JJieRno6EpCE+PG35uBbijxONfAIBv6iHi9wDgx3rYhLmnoqjUgOaE6MXwJAC8CQCW6CcpnpsNALBU/yL/ysCunpFE4ZAkCj1mjs9ARLKD5XgzHowZ3G9wuz9Veb8DBe6f1C8Uj7EcP12NHUmicD5UH0Yil4+VsS7mZU8By/H/ZLpgFPH1PZgIo4evgpJJQzIWMnwUNVzX7Y095752qv8lSEX8AKkIpCV/XSI8sTc4uPMxB9fzqVInpbNxzZY6BfZE/P09aSkAlCprxpKE8CcFQpDbqRWTUCgZgLLXgqe+Heo7Nn6ktnXNvUaONzS2+yfi0M53Y099MjIN6VQCHJ42qGns2VPHryl0RZoFSRRawlNDb0kk4kDTDMRiEXCKU9dJonARy/HPw/yhv9iDLMdjuFwQpYybJAqYpH8ry/FTRg9ID6WPGTBMr8z3AMvxQcwAAQAm/B8DgFskUXgIAIrpFJyDhgHzqtnEfhUwWqV1MDqoyb2D5Xg0VkaQrsYBSKKwFgAKXSweYDn+Jqg+dpc4pttZjv+GmQXRI5ZE4bf6BbcQPiyJwtdZjjf0+UmigIXwfzLqNRf1PKPTA9eHxo/aMukkCY8VJQOpeAgiUyfeaORg0DA29lxwW23LUrA5XKRFMhkcBXFwNwRO7LxaGt9zIOrvLSpUzHK82LTyiqX17esfdXGdwDg9ABjKZ6vrlPYiMOXJ0DQwdjfYa5uAbVkF3p4trzFiOCVRWIPeZnh417ujY4cgGfKRvnjKXgNsywpwN64wmlxHXBINT78inclABs94OQ1RcvGBf4X5hVjJkw2EQph6eIXJZYsaTt3DzGs4izznH9EzMrDpHqge8KOsBrBqXi4qNp56hb2Q4bx8ngynEXy9zJy1ke/Uf5lYL28Vn+X4H5k2nomI/33hySGtd4emQVEVkBMSxINjhuXdPM0r/6dp2eYHHd4OyGA4jWG3moGocBz8vc9CYOCFn4aFw7eXWqeh56JrG1deea6n/dz99tpWYBws0DYH0AzyN23A2O3gqKmFmsYu4Lo2f7t13bVUTUNPyXxNLDh0RXTshSNTvU+fnwiMENoTzkJSsUJf1wa1rav+heX4h42+3mjYf3U0HAT0fzOqSrrs47EIDB8/YOiCUwHiVVijlPKU4eKXJApFQ2ETeat8zz1o5PmSKBSk/5iEs0rrpGCBIInC9YWoSfpF7Jl52u+/Gdz0q2bX1ilInSU2M1SYlEQB16EKVOzzomDYjmGPv+/Z6xKREDiczpkuHTkZg6ivfw2YQFPPhTf4B3Zs86vqZdHxI+B2ucHG2EFJxCE4sA85kV8PDu/a7O26sCjtRJ+KSfKlUmDwNel4ZKuayXgpmgnRNucA46p70MwI4ojv0B3+Y098Le4/ob1GuwtURYUMvlh7DbSuvPSuutY1mB80BKRl+cd7b4lGRNJaKssKoUrJiQREQgF8HHmC1c5dVc14shz/iCQKlVBucoHhYSGUVXjJ96UvkW7AnFc18s2zQu0FgiGWSxE8WO2LmEEULYbloCznAr/vkiggYwI5mnkhicLP8+Us52CkwPp/Mm08k5HJd0anhoktVmYk4AAychKi0yN4QK9iOd4wlaXGu/QDjcvSfwRVXRn3HQeb3UkMDBLfU2E/TBz465uFQ39RPR3nrTNCKWIbeh43Sc2Yhan+Z/dNH9++MR2dBLsdqYMavSkDMjAuDuo6Nx2tb1v3ZTNrxqXAh8NBv0dOpcHmsENG0aK9jKpAMkmK4Zh3/NMi/XJlcaBIWNwmiUIzy/HI18sLSRS8pWgwLMe/H04T0ANmOR7zoJVgMbT1lizu6oWyWj23KiJfWr+/0AUGeciLBpIo3M1yfDnprRv13HghvK1ALrMULi3rA0mEfR+JBX2kso35P0VRiFeG6kSp6DRExg8+JYmCYaENNIi1TatuaVx2Yb+7aRlkgAFFUysGUBRIS0EIDO6ByNherJbOq/rRZO+Tk+HR/RtTkUlNRESnNuFUTsblBbZ1LbSsvLSY55QXoYDvsxiyKxiy43uFnrqiQCajQDKVhN7De87Vw4P5QFUKCuhzF3lsqpjh1FGKLlSVCq4Jyo3pz3Eew3Z6nj6XXA+ZBQA3XkyxOFTEcF7HcvzfYB4hiUI+hkQxTd1PlbMfrIsg37fEsRTk8xZ4jz5dyjnM+2FKovCKmDgBqWiIeIdoPHNvmXQcAsP7bKmo3xQVANu8aptXXdm44uIBJ9cGwDi0LkqGIZXpVGQaxJEDEJ04+BzMA7DLwd+/7Zg4vLc5FUUboADFaE4Feomq3QPuppU4snhTGWt/NhT0A1bZ0RjLuvFUMA2Ali2dBlEkdsNUgWQBPM9iKZlHDHSRlCrQVbUoYYTbWAYRe75QiQdrpMsIPU48yZAR8Z4ixaFGTNHA/OOtc/6+guV4ZEsUhCQKZjqCZsBy/Nx9zcXlJpbbzXL810ttlNd4xoLDd8WCAvEysYpNRIXRcOrfT8zjhXz9ePuUJAqvNfkiR1pXXbbM27NJxqq4SjNa5ZyiSUU+JvogOHrQOX1ixzaoMhKB/r9M9j63SkmEZjiiJCVBqZBWAFyNK6C+87xLy6G4DPW99BXMdWKRCNvr0XBmvU+8QMiZDMSiEdDpNs2wwNDD67n3vbXC7g48QZcU22C+vZ0CeFLvq15oOOfzuVhAYTm+T/fG7y5SHDLaXVQ2pDxGkOV4I99pU6R5MwVPSRSOG/E6WY5HLQIoz3iGfNckIngB00dZKCqoyklldjSeVCYF0wMvgDi6v6wrWPvaq+z17WvB5vKQlACGzSjggQY0HhRg8vjOyyT/cTM9z0UxPfTCnyb7nr8IUnFg0NtEC0duKiQSabDX9UBDz+YLzORxsxgf3PuA3zdKQnNikDMAiqyCLGdAzqiYlSCGNJUiTJUb9D7yBYXOoZyLYkT0zyFxusSynyzxuFFBB7P4zxKPuyv0+LFDY6GNp5GwPetl/8cCFYdyUawesWU+inO6N13sHFshicJ92T8kUfhEnm0Ma3HkNZ7JSAAySSR54/xzVHNHD0rL3aGhIx0+FAXpaAACgy/BxJGnyuIYersv2MJ1nkOoQRjeasLvNNAMDm0L4Lo/k0RhJVSI4Njee0Mj+1+XiYlkHDHuSyuEKSCrNDCeDmg759X/wHI89lybgiQKn+o7su/NmQxyTvECoK2bSCVJayi2i6IWKani43upoQ2qDzQQZaMUSZ7l+H83sEypfOd8eZ3/z8A2myvgYFbCz8wF9hHPgiQKbdUyvJIofKWI5/YPcJogiQIWBFvn3D3TAsty/K4Szy/7WFmOL/XcD0qi8EpJFD4AAN/K83xf2cZTEoVrk9EgyKmEPslCgYycBpfHCzXeFrC5WMhksDahdfUkxAks9NRP9j6HVVpTwDexjl/zSQ+/khhmnHSp9bHTpHgTC4xCZGwfyrpllVhMQxKFS0Kjhz4UC44TQj0aTgzVieFUVKCcXmhaeuH9LMeb9orwAzh88IW7YzGJeJboOaflDGQUCrzNHcB39gBjd0JKlsk+yWvUsByqDyNfrlUojyaJwpWoRoTdF5IoRAy0Thrp/TaCeWlxZDl+2MBmpXJpxbQBwjB/qKnG56sXIj9b4OHryzm/K8AP5t5hUpSnbBaNjqKpIwDAmsr389xfkO5kyHhGg0OfTEoiKDIaSC1cl2UZarzt0NB9LnhalhEDoRIlI4ZsFwuOgX9g1/rpgV2mtQ7r2tZ8u7597c+dngYtRZAzox1zrsGRA5AIjpat3RgafXG7ND0MSipOqEjYJYVph1RaBrB7SAdRU/d5Rbuc8kEShavxA5jyC5qxVyhA7xPDdMbJwuaLtv7hnA0XbaMYO6TSGa14pKrw+GPkLSorKV4CtSWOV9U7fnbpfeRYnby9xPOm9RyZaTWqAjCkqzhPKMVNTs5zA0KlEQNdDk8RtXdLFWmqCSm/CA7mYedi3iQP9XbM/y3jeabqLKd8IDFR2JpKRIgICIbrWCTCn866NvAu2fR5rnODQtndoJDRF9gTaQNFSUNkagh8vduvDwzv/rnZg27oPv/t3iVrNcWk7MRLBEWDFJyAiK/39WHh2IfNrhv17f+iOHoQ5HhI8zozMkk7oCedVmhwckugoXPDhVAe/rJ92yOQycgzuqGpdBqAscOll1+LH8QbAOBRJNxjsUjrNlIhFpfMVv5ON52mpIxYPhikYBkOieYBPRWwFebTeDqrmfPMA7xQnk7cn+e+U5wTluOLCr1IovAZSRRQGKYssBz/DpNPMS1ecorxRA4nKihphlMbqMYwDDCOGnDUNDzANiz5mJdfqlF7SJUc83qoZERD2D8AE4efetv04POPmj2QtvXXUY7aRq2GgwpKaGwyGaKiFJ44CtLUibxJ8EKIBQev8h1/5q5UZAogk9a5qjIZBBePx8jFoJ5f9eNyVLLRi3vmqYcJLQkVnEiojnnOdApYD9FM/rS+KXXl1utIegDznXgjVCaA7kpSEafReN5tQlGprtQGBjii8wnnIigYLQgBH1MzcPrQOfeOIkXYYjQzzLFXyvc22i//bZTArNh4ZlISUCoWhdAL1KJom70GHO46fBOO1vOr/6N93daHbK5aFIg7OWcIaNKpkwhPgu/Ys9f4jj1pmgzd0LVxwuasJaG15n2iEDKliZFMnoDg0O5fGFkHDVPU3//rwPAxIoaMQEOckWVS8VaYGuA61oSbuzeaUd7Orq0++bcHIYk5YYrWvE2gIByNgpv1wsUXbw3lcMRIuIv5UEKWx2YA9FQ1rIbqAtukimGbHjYf1UP3F0t0ZcxAV21fPk+e0ZmAahWMFqoJolYSBeNyaNUN2X+hP4aVbl4Shdac5prvlakBaggsxxuaWcZyfCmWiDHjKSfioOoGRzNfyGX3gMPleTa7TWPPluvbz7kcbDX1JI+HYh8amV6rKqOcW2Bwb8P4ocdM6UDWtq7Z6qrngaLtJMTGglTWkMbFCQj7+gzlSVKR8c8ER/Y3qHKapB2wOIQep5yRIZ6UoaFzPXjb1vyLmWOTROEyNCKPPvo7SCaTpPhDwvFMBsKRCFCMC7Zu/ce5VV2iTH3LLe8BOYOGMwNvf9uMvTZNxK/Es2I5HpPhKNO2luX4LSzH42yaBl2N3chJ2ieJwleL8EWTRoYIwsKhkH6lkZxitRoQKjHMlXq/dZIoTMD84olCve3IP2U5XsBqdlZ/guV4tCm/KbLeGyVRqJTWVypFZnpMUN4TBsVAMhiya+MmtdHn2NpQUw82Z+3fc7dtXHrRhoYlG8DBcjoFRx8LrFfK42E/BIb2AhpQo3Qj9Gw9zT1+e009yUtmC1bofabjEYgFRiA0tr9o8QjVxKNTA++M+IdIuiF7CcDcJBZtHLXN0NC5FqvrRkVocU0kHW97+JHfQDwRIwYTLxppWYZEKgWyAnD99UTTBIe99eWr0mLF/W0346wxmC/P8xQaTIE2trn3+VFyS+cAomByMdyZa0B1w1mv/2kkJEdh44XCEVicMJpPLTopwCCHEz2/fFXm+cQxPXLJezPQXlvRiJJSalFmqElFjWcqKV6BxpOQbshMIE1o2MHWI3n90FxZMH71Zdd7O84Bm9tDcn44ayhrRNF7RaK979hzII7uRbqRIS3I2qaed7nr20hBCtcgdXf8X5EhKQUgLBwv2v8aD/R/E0N8lM5DqTpN0wRD5gyoNic0dq0Hdz1vWJ9TEgVUe3ngwT//GkKhEOG+oseJ4XoylSbSc296E8lNv53l+J/NPZzsL+846XFmUTF/1WzuLF9XUR7B5GK9x1kD2qj/jp4rWdOg6vglsHDYVcHFZz5TEuFqGVmDBvQDkigYLgQahaTxJucDZgs/pw2zjGciKr4lFY+BSviI+vRJHG7hcCP95pSWLqRAtK669Pzmnk2gEKEPrTKPlWd08zDsziQlmDi8DaYHdvzdSN8q27j0oZrGjpijpg5k7Ngh1k8j5iNxPyT0ZcfV5ldx9/VtiQXGCBkejwNNORp2haLB4WmCtpWv2GpCWRrDzN/++jf3QyAYgFtufg8xmKTVMh6HN77x7fDGG1GwhYyOMMsyqIZgRTW6iuZu85ABseHsSBNWF6AwKnaCDISqQxKFdfPc9lctMeRKPE9DRtagAb0D1duhuvg+zBNwCgMsduOZTsYuzKRTJG+pGU4krdNA28iFN+/wIqxSNS29aFXnuisBqZNyOk08RlLdzqBfRoGaioH/+E6YPPbUPiMjfFmu/a665m6yljZ6Xet9z3qzsam+vCG3FBj6v8jUKNEctdmws0ejWmEV3FbbCM3d5+HxPmXiA0MlaLjpzbfBbe/QLqz4eyQaJYZUB4bq5YxpKFmdNomq5eUMzOvJMgXS+nmRNS6lRDrmSy1r5sMogCy/dSHUkEynUgrATMXcSB//1w1oGSwW7IRFiNknhZJhst6a5nmSARdZKc+iVa2GrvOWdW+6Guysl1S1cd4RoRvJSA8CSCckCIwegsnebSW9H8bl/V+2qTuFbZuYTyVHRGhRhA4A4tjRjdglM/d5wbFjV6aiQWAIUUDBhiXCV6VsNcA2LYeGjo3FempnIInCHcU+sHfe+sHsrw/nCdVzMbdF7WwDfpZIXFWNjuaVRMHM3G2jKKXudYsBMYxi3qWpgXILWVjS9Van9QtcKeX6X1XSCpmFJAqGZoQVQdUmtC6c8SRkb/KLZqx0VXpVTpXsYGE5foDr2OBtXn4h4Lx1wmuUUye1QFWswgdhanA/jOx7RC2mLIRDsZx1rd+paWiDDI7AJAeFCQQ8LBUik0OQDAs35z5H9PV+UJoaBjWNwh+o1KS9OlkFcHs7oa55xbFSPbU5X24jOaETBvIx1c5rLipg9RS/1Pq/ZCiXgfDYlMB0NWBQs6BYWFxwFMNphNGqPMndshzfz3K8EW7r40an2eaDJAoouPKhuffrnWlGb3SpdIOJcR6nDXPCEW2oWhbZ3+RUHHOXDUZCkMau87sbezaBi2sjuUbsg1czKDOkgpqRIRHyw9jBpyHq69teTEzZwTb/nutYpUm6ZUVD9CNEKlRcFN6ba4CDQv996RhO10zPFLvQgMZkCmq8XeBtWfbRUsePfd8Gv9yol3i1AW/G9BzxMw158qglx15IorC+WvuXRKFUa+2Jakwf1RkXZwLSZeRA9xaqIxjA7XnuI4WABRrnsWDGUyVhO+FFZqvcKqRiEfQiu42KNCzZ+FqqdfUrRaQF4fRIRc2Q/Ke2pgKYl5w4vG1VPDBSMMzDMb1c+9ovUA72pAHNPphJQmx6FDKJCBlIJonCBnH8GEAGieuaYhJ2P8XSCkxGKFBdTbieEbGBXQYpLzjXOl+/7lyUI/0/byhVba8G9PHKpd5H0yIyRfDTEsdjVIRl+wIUROLV9jzzsR4MGtCXJFEop1X5hjz7K6X7WgizuHxnWNhOx7MGSs3R8MRedzmVMKWs077mSm/35muftrNNRNcSWyNR2BLXdLnd4B86CFMDe66NCL0F59nUta3/ItvAE6V5IuiBmUzsfacA4iE/JGMRFOeARHTqHcnpYaAVrcCEnmcyA7CnLwAjARt095Q+dEkUjHAQJ3AeTjZMNQAPnD4U5QEWqrbPh0FFEj4sDhiRqsuiGFkb0YQXaaOLzX1fC0wTNTWJoUIYaQd+wcxoHUkU8nX8lT0FguX4nxioRVQVlZz/s4wnxdgJYVQLkzFXqdGOkokopJNR0xw91tvzjhWvfMOj7sYuyADyI2VCeMf1bTYbTI8cAv/QvlPkq3JRxy8DinHOhP7ZoWqJWBjZASiv1hUNjn4qGQtrXE5slUwpcHA8Cu/6yD3woY98xqhHWTK8Yzm+HRYvjHT4ZPmZuaBzTyC8iBjoZzfCvSsaupnomS97DZbjyYdvopUP55oXw34D7+cpFyp9JvlcahrmiksW2KpFl8IcKHI8DWw6KomC0YF5txi8zwyKSed9zUCbcLXbmo0ZT5vDvR/noBMPT/c60XimkzFIJaOlNPLyjtxo7tlybfvaS9Sapi5QaBvp8cb4GwnsKH0XGu8Ff//Ogl0Adc3Lvo8Sb0iaJ1qcKMiMiZ1EDNJJqSsZC74j6h8EVUmRCnsyo0K/LwrPHZ41gbiUgsusBoACqHZH0GmXNisQ0k1nv+h6Q4CRi0hJuS89dCuaKtG7TH5faq08z7vFgPE1f7Hn+P8xsG81m2ct1RiAQseSKDylU6XmYqvJwytoqI2C5XhU3L/VwKaHSnF3pfxV+phBbdVieHeJx8saEjcfgjGzjGedt/0ZhnA6MWTHKjfeFEinEpCSRDJuuJydeDvWLWlZthncDZ3aYDR915iIQcm56cH9BQsr3s7zPmR31xHaFGmL1J+fSicgGQugluiXkRSPx4oao75oCvYPTsH3vznr+/2HYtJXAFDqSnsNy/G9Zl5zNSggJlHqZEdBhlO+gHifJAo3SqKAlKOSw9RKjFCYBZbjry411RDHxuoG6ZS++TzH+jrdaJYSiMGc9Kx2YhMwUjj5qX7M/ZIofFoShSswpJdE4TwsLOGccP04xwsI7D5RxvFVZe6VTq0zwiYZkURhyZzzJDfEfTzPcyrmjerGtxhj4/0VFLeq2j02t6XvMcbm/JampiSDPv2NiBIjOT0pBfFqub3MwfQrMkqmLxENgRwLAEPbiPeJ/E9ROIHjPH7R0HN+3lDPyXohytghk4ppavMqjvaVIRYWQElHydgQ4o1SDPT6RPjKl/977v6LifCWGi/xLgOze2ZB1yEs1Tu/D6qLe0o8TvK0kmg0XZsXyCFEpoGpqYb6rJhZoUCBts87AeDHuvpTljyO7yXmo99lYHeoWWBa2HrO8WLlGYUKHjCw+TKTedXsPsq5sM6Qi/MBDbfRwYUsx9+pU4wuK7HpsCQK2Ff8x1w5QUkUvltg+3IvWHOBkWCxdm6knhmaxySJAlHrKYLvS6Lw3hI2orTnyXL8IZvLTSrVpDCDGURyiCj0MYm95bO4lWZzLvyyzVd0rLsUEmkkvqMSEwMMTUEmEYLJvucL5krcdU3AuNwkZ6rR3ykAWoF4aAKiqBKvyqAyDgilaDg0fEpNpKA3JYlCKaN4Lsvxsy2xMeCXo1R+9HdQJUiiMJ9jIhCP63w8U4YzC5bjx/WKb8Hi4JyKK17Q7tNvXzZgOOP68VVkOHOO9zfzNCzt5nLWlUTCaS6l/rNHEoXbDK7XxnK8UUFuzMvODEqTRAFHR3+0wLamhdDzHFungY4xQzlz3XD+ucRmVwFAUfEQw21nqNOptUJivlMbM4xGThL9EAtNlRplUFLmvmPVK9/VvuYVoNAMkXXDuen47/TYCQgLfXnzHU5P0w4b5j2zx6RT5hOxGMSiYXK8Tg8HL/b74T+/+ysz/L3XlDjeWQUCE7j1dLWcSaLwmnmu6r9HD78rBsvxP9Ql+6rldQu6nJ4hGl0ZwOKEIQ3ZEkCvbR3L8f9n9omSKHzDwMjnLP5bEoVC4zhmwHL8BKYcTBwGpibGJVFAb7zYa7hGEgWkqpUFvXV7xMT2pQxoKcOZxZJyCph0Pi8Pe9mxIq4NgFMBi0gJKQSSOJHtKCgb6Ml1rb/8GzUN7WSEB5lYRKmYEgBR6P1JPuqAi+V+Z9P5nigFp405okBOp7RZS3Y7iAoNd9yZl4o3qOdrZrXYSaJQNBdXoedhZJZ9VQyIQf5qOfiY7s39VzUXZTl+N8vx5+lD5codSoY5bBR4adPl9OZFoZ7l+BMsxyNXF0n9j5RJWP8Ay/EtFcyBMmu8jc7uMeslohSkkSjsG1BZn3/R4u4cPAzVwzcrljFjve1gc9RAEoLEu8MbTdsgnUrifCMMk79SRqVwFpo6191x/MU/3S4ci4McnQYbya1mIDh2FOr5lZhvQg9lBozL+xxtd2u5zoxC0gpkXEcGw3UGFMYBR0YDcEqzu4ZBvaJWi7SmnGogEeAsANMjiLOQRMFQQQVbUMvdR7UMfU4BKWNCoKIq0I3JrNyfXgi4SDdWOFUSq9koUvISy/HVJNabPVbMwV03934sFOnFxnq9OHSonLEuJfa9T1f3as0xyEn9X7v+HUaRmWwH4HYTOfKn9HXxsw/oXGG7fqvRVbMQR/FCor9mzD/LZYrhlATL8bdUcThch54+8+ivJ53TgcXorxP/FYuMCjFuPGsbu253sNw3sLBAOoJy+tzj4WkITw4VsFHm0L7iooui06PPB2MhQqBHFaSQbxDikal/nms8kerB2JzEkBPhZU35gxDnabsNFKcHPvjeggwGNJ6KbkANqeOwHF+J+k9Zkv4LAYManKcN+hwZ07NkFgosxz8NAE+fhv2MmAlnDa4plnPs5RRWFgqYa89Oc5gPnGJMvG1r7q6pbwHG7tK4nkRZiUICPSSlMISnqvMZshz/grd9JeDIYZSeQ9J8KhYCaXrk/LkkXeQhYm4UqUhkLAfp11SBsVHgrufA2VCwKeJJVKfXr9TJ7CgDSRSK5ZAqFXUt5tFmUU4RyoIFC4sIeT0xN9cCdnetNkeITLNUgcECj5wivMzJE89XZZxp85KNN9Q394CC+0AlelUBVEZKhIRTvTekKBHVPI28j7lOh8MNtVwr2D180ZyITgKP5XTh3FyCSDzfrV5zPWsLFiycDcaTbeg46PI0Es8zKwNH67eUFARf/0tVCd1Zjn+wtqkDXLV1kE4nCa00Lvqwb/0UagrORkKgQcdWTRRtdrH1wHIdcM7y3Jlrs/DinOS/f56FCV4wsM0DuniGBQsWzjbjWd+87A7W20YoSjg7CMtGhF1JAcjJOEwNHYGpoX1Fm/iNotbL/9zT1A6pJCoiUYA96vFoHjqhRjgl6kyYI82k0uB01YODbSrW+TNoYmTDQClhgiqJL5iaP2/BgoUzyfPk+EfYhnawuz2kyk44n5hnBOwvlyEqToLQt+vdkihUzP9z17X/tK61Z4ZTin30Scx9isLFszbUPU/0OhVUacrIhBVA2WsLFhgK9NkWyklWpNcoicIp1dgCx2S6qmfBgoXFh4LV51pv++O16BHG45ocnHJSER5pRSNHdkBQ6MNWuoqAM4VqG7u3O2q1EcaYV5UTUUjGxVkdEDgLSTPeaDy1TiPG4QRPfVuptj9D1XDkH1b0QgBwcFpRzFPXigULFhaV8WxY8onGzvWQQW6lnNEMGxnsphkyKehH73PJ9Ohh5H1WBEdNwwMcv4yIfuD8IzmVwCFus+lC+gwjNOJZgRAcTmdkXnkWkijwOdy1XFRqOC1YsPAyA12MGFzPL/9rXWsXyOjtYV85DnTTPVDGToNwYi/4BvZ+tpiuoRHYnfU7vB2rgNZFj3F4nCKnkBh8EjplKrv/nNEcJaXYDCgPla34jukFg61d1SL+WrBgYRGgKGnc07DkS/zKLYRfiV4nMVz6QDesficiAZgc3AvTo4fKEozIArsyapu6f8Y43YTCid6nqsizZiZhMUmrGelz4YsQ/YugvsD+kQtqGrrqtqF54CzHm2k7s2DBwplsPLG4wa+48EfuumYSNpPcJ3qfpL8cqUsUhH1DMH5sJ4gTRysSKXV72n/orEHdTuwiIvtxnOJ5omAJhu66GhUa1LkDr0rAjKE1gnwit/lwpgwPs2DBgkGUbFds6dr4vrblm8COqkZImtc1jbKCIelEHKaHj8Dw/ifulkSh7FG7KA7r9jQQlSU0zkDRidzHkTZF0SigrLeLEk+UHP6s7UqAdBjNAfZOm4YkCu8qkD/NR4EyIjJswYKFMwiGer1XbHnDLZ7mJcTzw0mYuu3CRh9gbDZIxKLQt3c7CMf/3luER1kSNfVNpA2U2E6KieQ+RlEMueExoNEkhlPzPI3Osy60bblDpQypDbFYCbNgwcJZB5vRfF3/7gd/mUrGIDjeBw6njRSPMITGIg7NYM95Cg79/c8AtOMgzuXWlWhMwV3XADa7AxjGDja7C0f8zoBGz1MP3Wls1dQl80wilee1mZYaM6H9V84oVwvF3/st8aj/ZlVOLaFtNsFV24oq5yWl7SRR6JaToettznrJqMA1sjOiwfH7KJBrMxm5pa5p2TdZji8pEYfjauKhsQ8n49GtNGOfAKBQkMEJquKiKIUBVXXQNBVDeQZVUWpVVeZoCuSaxu4PeppWlaV7EJw48FWsEzjZth+gElM5a+jHviYRnfyAIieXMjbX8YbODWeM0M3phuEcIL98y3Xx8OTD2J4ZDwfA7nQBpWqSdZh7pHHKZiQAA3ufxPlHaEAvNCvP5aipT9vtDruNsYHN5pw1F52E7MTjRAV6VFXCohVlNmyvSHFdEoVzAcDQqAMcVFVteTILADEpcMNE/96P+Qf2g42mwdu28kP+4YPfa+5a/y/F3p+BvQ8N+kf7gfV2wOTQoU0t3esKqaHn4guHd/zxDUkpADRFQ/eGraiBWdJ4CoN7nh08uB2C/jFwu1zNeLFHZQYaFKApbXQ2jsfGyA2jLCLAAzbb6guvw9lIu1iON5xKQom4yeF9J178y/3YfgcdK85/H47OYDm+LA62b+TAkbHD20GOR4DlWnH9vUYG/r0cYdh4ooc2Nbz3p8mY+K6h/c8QvqWWg9QKOPif3c4AClSP2sjJsgv1GY3OVUHY3Z4nbXbX1TiEjmZss/rQNaOp5TlJ2yieeUQHNG8esxBCUCYkUcDhVoYr5izHf6vcfVkojBq24SBanOmxfpCjIiTCQfA0daEhLGg8A2P7vrvj99+B4KQA7SttwNY3onZlSYhTo2uCwgAExwbA5XRA8xJjE3lxYGIsFoV4DLVogBh5OR6GVCQAmaQENrsNaryNgALfNI7VJqYVJ8OqpkcMR8TJzw8d2gnDh14EO63izsFd14KjM8oynlJwEiYHD0EyFIDGth6cHoH6qpbxrLT63NR13rsnB19sjATGb5ge7QcG+91pmy4eohV1MIkqjvWCksZedRrnqrQYVfq2u2q3253uq22MHY3lnBA7aziz+U7cEznZDMvn6+MHwCwkUfgnMyeQ1Uk0f8AU0vTooY2hid5Pjx/eCam4CKn4KXOrZsE/dOijUVEET30TtC1dj2t8wci+HE73ix6u6fKYfxTcTifYbca+Lk0dq77mcHs+nUomgbK5wMbYleDoAVo4tgNCYyfAxXqga/2lUNe0FOwuDvP8Uczxe9tXfILl+FnpqlIITA7fKgz1Qn19PbhsGRTVgYBQvuSm3eECp8NFRMbdDht+D83UFF5WMFQwykVLz+bXr7v87T9z1XKgojyckgEGvUJ8EOexMwzY7XaQpkbhyDO/gfGD2yaNSrXZHO4DNrsd1ecwLJ89jF7rztSMJ+Y8UU0eKkbJq7PeAGAZzkWExs51dy499zKgnW6IocZscBw/pxsLjYAWTuwDRU5CY/syaOxYZZj5gKcz6oqhKA7hNxs845o61t25bMNV1JrN11Grz3s1tXzDZUxL97qY0+OFNM7tcnigY91Vv1y+5U1U18arqCXrLvd0nvOqdrMzjiRReMfkaC9EAj7oXNYDjXwrZJQ0hKfJ+zEztM0c9AlhVIYoiKugVpve9/I1nojmrk23nnvVbZKntYucWCrIQDMYVoNu4RhtDpKahP7dj8DRZ34ZmDzxYsne7xrv8j/VeOrB4bADKOk8c6p1I40/dUHkMpCrwvSDYhtKooDhnZkGgFJjTi1UCd72jVsaulYDZbOR0dWTw/t/n2+76YnjvwiM9qMXCdjF1rJskznOLeEVa2d5JVdrVVVqSJKTGOIMjpPBYWcVYWzw0P9MjZ0Am9MF7edcAPVt3YQ+GJoag5FjO8pKG2n6FZpyGen0UzJGNWpfdijLeCI6115Zu+yCa8DbuVojrasyqYLrEztm2inldBymRw5B/4sPXdf3/G/VsO940bGinsY2cNd6QJ1rPHGKJ558WaOJ1X6i9ETGa5jB5/V/+/SxD7OA8+UlUYjoFXUzJ86NLMdXcyCVhSJgOX4Xv2wTEe2OBAQIjJ2qTCiJwtt8A/uaw4EpqGtqg/qWbnMiMqpqJxYzW9lBsW5twqN5UJTWzEHWyWg2uUJMjhyFyPQ41De2gHfJprvq2s8BB1sP8dA0TA4ezp1RZRhYSyBeNukkxGYVBWf/WMiDilzy1p4LOgHoURwQF544jlV2nbhOkWFtaEkZhoJ0Kg7BiX5IxkSIhSd/PHbk2S9xbSvfm8/Y1Let+k06HrqGttlnzx5RM/pJjH3t2k27ksPsTqQSwNBIEgWa5fhZozgkUWjCoixqoph9HxZDjlOfDto5Z8hVPuQ+RuW5iGYvRlnBlRr95tK3zxbosLCBeem4zp9V9efY9ButynEXZXNn16aVdIzRjAaFQgk2kpqh6Rhlq9mB+Wizr7l16bl3j/W+8K/B8RMQ8p0A38CLD7Uu3Tzj/Qcmer/rHzpIvKimJavB27biM+b2oKKgrR7JauGsGSGaXGDukKIoHDimM0Uqs52+4YP37Xzkv0BNJ6GlYxl4mjZ+WfTtd9U27P0MFsYCEwMQ8vW9oI9PNg59Oi02wZA2aF19p1JIovAKNRNrpZgaUT+HqOx5krMZM+f37PkE+vZpfXsmk5Zc6BWriupCyQukg1FApe0uDxaFsbARyym+MbqdyK6VHXJHPg9VjiuUzZ3OOadBP0YbpSRplXYG8hW+KzKeLMfjlZwaOfxMYFBRvVH/ADlRCbAyrvcjYR4Uq+WxkB+k0BQER4618cvPe2iyb+ff2aaez6EsXXbN+iVb3pIIDV+cUR34pTwJFa+CKI2XIbQ5vELqPe7aCVlaTQnfvAiO5Mg1nJIodOre6HvKfA8Wg+H0isKxF5KRyWbyjuvap4hcHYDsPL9cn0ezCydD0uzm2vNQCEaGTCZNpAK1llydLoZ8W8YGNG0HxqZ9vtkQF/8jEYKePzuZXtG4uUhx00RmksDYa8DbueHb5QzOa+pYf/sLD9/zr9GpUYgGx2FqcM+MpqokCmsH9v2lEWdu1dTVQVPXOfhZ/czUDtC4ExUxbY5sJcZT43rqnXHaUhUZJd/QoQ+G/WPgqmGB71lL7uNaN3724FM//Ix/5Dipmvv6dy/DppVyONf6MZIEGVQIcbL3/f7BnT9IRaaAZvAtRecKF9fOi5lUHPlff6fJDy3LrM46ebX7M3IS5HRypmVce4wBxu4Eh4sFpDueJILr52T2Api9MGTzu9nPRb9pxWn9SFQF7E4Pnk83z81JVyUZvOScyxqCQu9Hep994Hv+0YOgZJLAMI6TB48Hiy+N0c67aNgPx3Y9ArVHd7yyecmaJyd7nx5lW9ZcpE+7A1d91865+8AwQjOY2qwjTV2JvK04drUUMPzGnc/qWkI+XAXzhHDMLI7IXQy4YKJ/d/P08CGg0EOnsy1gOYaT/JhRojrpXeittifPK20DzalHGUIZ0ukUJBJxwK4IBjmLNE3+xcIg0sqQekOhT0meoWkfUNl19BMQPS2dFUzWAfz85DjYa1thtasBixtlkbGb2lfC9MhhCPlGwD98hKhcsRy/UwqNfz4o9EMyHoOu1edCQ8e6MvUFsl/MmW9iecaEpADMcEOKY2JgHySiIWjvWQNNnau/lL2/oW0p1De1gjh1BMb7DkDXxq3vBgDjxSMy1lu7Zac3VIqo6LtztHcXBEaOkdyzdq0mbYQ6U2fGfM78zF7U8XzSMiba246nNv4uyylIpVLaKPLsxZ9iwGZ3Qg1bQ4wnjg3KGk3lFGch5+KecxxZxyB7oceiuLuuBRhX85cBoPrGE+HlV/2HJAo7xo48vWvs6N8h7B8hVXMbzlvXr9yqkg3lGWAYGlJJCcb6dsPE4IHOmrqGsYNP3AsN7SvB09T9YU/Lmvty1yeUKJohRpTEfsSQZgyF7Vn6B9KmJFF4oApCHf/OcvznYJEAO2wiU/03yZtefTF2r5CwmOTY0NuZHTpqzgT5C/MgDFaUtfAUkCVI5XzJaeyKUZQMpyhyY0bOtJDQiKbiNFApDLdpmhGBolI00llIx4RqV0F7fq6wC2q9aGGVLgerZvcpcxTlEFye9rI5sd72VR+ua+q8V5wYgMj0GPjHjj6D50Q0MH5TZGoMnM4a6Fn3KihLXwD1FXRPmyYcYwrXKUtBjFDvKKjJzgOjsleXMiCc2Ln9b/93D9gZCuq5elDkxMpp4ejtiiI3pSPD4GnwQg3rBHF6FMTxIx+XROE3LMcbUv8CCj02PB1mTFnF5t7bsvJi9rKG96QT0UspyiZSFB0j56eeB9bPD1nT/NHu085T9aSXj+eTflAqZGozcrojk04tJaE7UAquSdO2acZmH7XZnb00TeuOUs4apyDLJMA0kp6X1kI38jcFKrZOshRtn6xvXfPduc+uKg0BO2o0YnzrM5MDL3n8gwcgFgmSdkv0UND45YZwmiekQDoRg3AqAVJ4Gvwjx8Bd23Dvgb9+/15PAw/Ouua+mvqWe6aGDsxcfbLejG48C4pzSKLwcQDAkLCaMN05dTrgaVqOFwW8vazgbV1134Ft999rd++FiDgNvv4X7ZODzz8+emg7JKMicPwSaFm2ubxxMRSVRlocth+TLqGcdEhZa+X6sHNVwwxCEoVVB57930sS0SCoqRSM9R8Cv3/i5rScvhnJVG4HDZBOkAJuJpUAoW8P1LWswAYCQ8aTfEeJjgSlGXmamp0+KwOsls9Gz+2sQtU5XHpitS4weuBbbD3/ienRgxCZ9kE6KRGdTnIykg4hPf+lX9UxDE9KUUhKEYgGJkEUhshUTVtN3QqXp/G+RDgACSmCCVTigmNoSGa4a8WMQqim4cS2uS1VXM9ClVDX3J32NLbbJwL7YHroIDjt8A/To0fJudXavRbYhp7Hy1lX82YYwIIojY0bmEcrExQF8uzwtDxEAkM/Gj7yAtGSqKnn8PsBqZSczepBBuxgczBgq0lDKhWDqYk+aA+O3QQAbzV0nHqEp33PSFOpGcnHlxXmjQCrCwp80j+wY5vQv++yoO846X7Aq6GqpDXHE6/kmkAn0QbFk5PMZlcUSMQiEIuGIIMeJl4JUYBEV1cihpPSuXfmqUpm0c9yvJGpmBYWCHUN7bc3tC+/Z6LvIEhTEzAhxyEmRaC2sR1ae86dLnfdmtqGGJ0tjJHimK0yzzPbTKK5DWbaigkkUbiqf+8jl/tGBsHbwkPnmgugoW01ivEANpdka4WpeAiCE70wevg5Es2FpwYg7O+/ua55ecn2Yq0JBb1P/C4SIzqrTmDhJOa9e6B56SvIILepoRceFPp3X+8fPAjxkE8rIhDbpwUyRCBBk2kiZwBjQ7ERAIqQdtGgYiFCG3+cU0Sbz9fwfZbjPzRPa1uoIrz86u8cf/GP97hr60GWwhDy+4B2OKG2sQvq+TXGGtLzQ8KLOvE8s5KIZQJpNDMtxujRqarpi344MPLp0f69EJfisKpzDazc9Nqn2lds3ppv2/H+XU+JwsAVEWEAxLE+kJaMfM+INgNhURBvW8v1Kpk0MlUs5MFpa71q6t7yOiQYd6y99BOB0YP/5j9xAML+YUjGIloInw0XyMmFKSG0kiTnQmgvpJ1d1a/cmguarQZWnJOZgwdYjscwx8IZhFpv23Petq5LhGP7IZNIAFfXBPXNXZhGmqxkXZJcQh3barQDY01NAciQ+Vvmc56hqeFXC8O94HQ7oXXJWqhv6ixYaKtvXPLVnnUXXXFoWoCAbxyCwmCT4cNEZ0ZRIRUJweC+J246uO2XN9ntDq1tGms7qgwu1guelmWf5Pg11a4pnDE4rX2rLMcjQfYuSRR+621bd2s0MPqJiH8QwlOjqN4CyViUUBA0Ck0O74qmgMnSC8gZjBV3NKRMxTJzOUCC/DtZjt9WpfUsnEbUNXZ/h19+wSWj/X2QVmiob18NzV3rH6twWRVTRkgTyJARMOVnK1WVopIZgKgMYJNJjt8IxW4G/rGD3zyw448QmA5AG98FDW3LEsU62liO/6vQ99z+/rodG8PiFAijfTA5uOdXLT2bbi66I9oOwLggrTKQTKfBd3w3+Jl9up+iTdDFfGtdUzd0bXg1Gm/LeJ5OsBy/H/Ohkih8pa5l+S2NEf/749Hp9fHQJMTC0xCPisSQppMxyKRTZPyHNjteb5XDbGcGW9zIpXB2J5J5/I7l+DdV55VZWCggFck/cuDe1eHIh7Ew2bF8I9Q2dt5W4bK/XbLmld/2tnQRke6GjjV5++eNwNu6/L7ONRd/y1nbCG62HtyeRkOTCLKgadtUI78MNlx8DbR1oMDJmpITXz1Ny69ZteXa8UjQB3UNPI7SOYU/PRedS9d/PhUXv5joWgl2GzPTzadk+93ReMpJcHtaoMbTdABexljw7phcSKJwfiLie48UnvpALDQNyeg0JGIhSMclkJNx0lGQSSdBlVOQTMRgxYX/CD2bXoN0pHtM7uoDLMf/5zy9DAsLCEkUsD1TKWdCwHwDaXwAsAYFvFmO/4PJ52In3MXYSAQA281MfEVhcuTVsxw/anB7bCrBXCdGihmd0cLq02fRY25E8XoAeJ7l+LILcmc6FpXxzAdJFK6Nh4U3JqXQDclYuDElhUFOSJBKxqFl+fmT3vaV1+OHWGSJpwHgdhSSOI2HbcGCBQsWLFiwYMGCBQsWLFiwYMGCBVgQ/H+yHLdGwnvuaQAAAABJRU5ErkJggg==" alt="Boukay Vital" /></a>
     <div class="nav-links">
-      <a href="#story"><span class="en">Story</span><span class="pl">Historia</span></a>
       <a href="#products"><span class="en">Products</span><span class="pl">Produkty</span></a>
-      <a href="#trust"><span class="en">Standards</span><span class="pl">Standardy</span></a>
-      <a href="#how"><span class="en">Ritual</span><span class="pl">Rytuał</span></a>
+      <a href="#faq"><span class="en">FAQ</span><span class="pl">FAQ</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="pl">Kontakt</span></a>
     </div>
     <div class="nav-right">
       <div class="lang-toggle">
@@ -549,8 +643,8 @@
         <a href="#waitlist" class="btn btn-gold"><span class="en">Join the Waitlist</span><span class="pl">Dołącz do listy</span></a>
         <a href="#products" class="btn btn-ghost"><span class="en">Explore the System</span><span class="pl">Poznaj system</span></a>
       </div>
-      <p class="hero-micro en">No spam. Early access &amp; founding-member pricing only.</p>
-      <p class="hero-micro pl">Zero spamu. Tylko wczesny dostęp i ceny dla członków założycieli.</p>
+      <p class="hero-micro en">Early access &amp; founding-member pricing only.</p>
+      <p class="hero-micro pl">Tylko wczesny dostęp i ceny dla członków założycieli.</p>
 
       <div class="hero-duo">
         <div class="duo-chip"><span class="duo-ico"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span> <b>TANBOU AM</b> <span class="en">Vitality</span><span class="pl">Witalność</span></div>
@@ -635,6 +729,24 @@
     </div>
   </section>
 
+  <!-- ───── COMPANY AT A GLANCE ───── -->
+  <section id="company">
+    <div class="container">
+      <p class="section-label reveal fade en">Overview</p>
+      <p class="section-label reveal fade pl">Przegląd</p>
+      <h2 class="section-title reveal d1 en">Company at a glance</h2>
+      <h2 class="section-title reveal d1 pl">Firma w skrócie</h2>
+      <dl class="facts-grid reveal d2">
+        <div class="fact"><dt class="en">Stage</dt><dt class="pl">Etap</dt><dd class="en">Pre-launch · validation phase</dd><dd class="pl">Przed premierą · faza walidacji</dd></div>
+        <div class="fact"><dt class="en">Market</dt><dt class="pl">Rynek</dt><dd class="en">Poland (founding pilot)</dd><dd class="pl">Polska (pilotaż założycielski)</dd></div>
+        <div class="fact"><dt class="en">Category</dt><dt class="pl">Kategoria</dt><dd class="en">Food supplement — AM/PM wellness system</dd><dd class="pl">Suplement diety — system wellness AM/PM</dd></div>
+        <div class="fact"><dt class="en">Founders</dt><dt class="pl">Założyciele</dt><dd>Emmanuel Cherestal &amp; Yotlaire Guillou</dd></div>
+        <div class="fact"><dt class="en">Heritage</dt><dt class="pl">Dziedzictwo</dt><dd class="en">Caribbean botanicals, European standards</dd><dd class="pl">Karaibskie rośliny, europejskie standardy</dd></div>
+        <div class="fact"><dt class="en">Contact</dt><dt class="pl">Kontakt</dt><dd><a href="mailto:hello@bookayvital.com">hello@bookayvital.com</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
   <!-- ───── PRODUCTS ───── -->
   <section id="products">
     <div class="container">
@@ -660,6 +772,12 @@
             <li>Turmeric</li><li>Black Seed</li><li>Zinc</li>
             <li>Selenium</li><li>Vitamin B Complex</li>
           </ul>
+          <div class="ingredient-notes">
+            <p><b>Moringa</b> — <span class="en">A nutrient-dense Caribbean leaf at the heart of our morning blend.</span><span class="pl">Bogaty w składniki odżywcze karaibski liść, w sercu naszej porannej mieszanki.</span></p>
+            <p><b>Panax Ginseng</b> — <span class="en">A traditional adaptogenic root long valued in botanical wellness.</span><span class="pl">Tradycyjny korzeń adaptogenny od dawna ceniony w wellness botanicznym.</span></p>
+            <p><b>L-Theanine</b> — <span class="en">An amino acid found in tea leaves, valued for focus and calm.</span><span class="pl">Aminokwas występujący w liściach herbaty, ceniony za skupienie i spokój.</span></p>
+            <p><b>Vitamin B Complex</b> — <span class="en">Contributes to normal energy-yielding metabolism and the reduction of tiredness and fatigue.</span><span class="pl">Przyczynia się do prawidłowego metabolizmu energetycznego oraz zmniejszenia uczucia zmęczenia i znużenia.</span></p>
+          </div>
           <div class="product-targets">
             <p class="en">Targets</p>
             <p class="pl">Działanie</p>
@@ -690,6 +808,10 @@
             <li>Magnolia Bark</li><li>Jujube Seed</li>
             <li>Magnesium Glycinate</li><li>D3 + K2</li>
           </ul>
+          <div class="ingredient-notes">
+            <p><b>Magnesium Glycinate</b> — <span class="en">A gentle, well-absorbed magnesium that contributes to normal muscle function and the reduction of tiredness and fatigue.</span><span class="pl">Łagodny, dobrze przyswajalny magnez, który przyczynia się do prawidłowego funkcjonowania mięśni oraz zmniejszenia uczucia zmęczenia i znużenia.</span></p>
+            <p><b>Chamomile</b> — <span class="en">A classic calming botanical, traditionally used in evening rituals.</span><span class="pl">Klasyczna kojąca roślina, tradycyjnie stosowana w wieczornych rytuałach.</span></p>
+          </div>
           <div class="product-targets">
             <p class="en">Targets</p>
             <p class="pl">Działanie</p>
@@ -706,6 +828,7 @@
           </div>
         </div>
       </div>
+      <p class="compliance-note"><span class="en">* Not evaluated by EFSA. Not intended to diagnose or treat disease.</span><span class="pl">* Nieocenione przez EFSA. Nieprzeznaczone do diagnozowania ani leczenia chorób.</span></p>
     </div>
   </section>
 
@@ -752,6 +875,25 @@
     </div>
   </section>
 
+  <!-- ───── WHERE WE ARE NOW ───── -->
+  <section id="status">
+    <div class="container">
+      <p class="section-label reveal fade en">Status</p>
+      <p class="section-label reveal fade pl">Status</p>
+      <h2 class="section-title reveal d1 en">Where we are now</h2>
+      <h2 class="section-title reveal d1 pl">Gdzie jesteśmy teraz</h2>
+      <p class="section-body reveal d2 en">Boukay Vital is a pre-launch brand. We are currently validating demand and preparing a compliant pilot before bringing our products to market. We're being deliberate — proving the concept, refining our formulas, and building the right foundation first.</p>
+      <p class="section-body reveal d2 pl">Boukay Vital to marka przed premierą. Obecnie weryfikujemy popyt i przygotowujemy zgodny z przepisami pilotaż, zanim wprowadzimy nasze produkty na rynek. Działamy rozważnie — potwierdzamy koncepcję, dopracowujemy formuły i najpierw budujemy właściwy fundament.</p>
+      <ul class="status-list reveal d2">
+        <li class="done"><span class="status-mark"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span class="en">Brand and AM/PM concept defined</span><span class="pl">Marka i koncepcja AM/PM zdefiniowane</span></li>
+        <li class="done"><span class="status-mark"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span class="en">Formulas drafted and expert-reviewed</span><span class="pl">Formuły opracowane i sprawdzone przez ekspertów</span></li>
+        <li class="prog"><span class="status-mark"><svg class="ico" aria-hidden="true"><use href="#i-repeat"/></svg></span><span class="en">Founding pilot in preparation (Poland)</span><span class="pl">Pilotaż założycielski w przygotowaniu (Polska)</span></li>
+        <li class="prog"><span class="status-mark"><svg class="ico" aria-hidden="true"><use href="#i-repeat"/></svg></span><span class="en">Manufacturer selection in progress</span><span class="pl">Wybór producenta w toku</span></li>
+        <li class="open"><span class="status-mark"><svg class="ico" aria-hidden="true"><use href="#i-clipboard"/></svg></span><span class="en">Waitlist open for early access</span><span class="pl">Lista oczekujących otwarta — wczesny dostęp</span></li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ───── HOW IT WORKS ───── -->
   <section id="how">
     <div class="container">
@@ -789,6 +931,70 @@
     </div>
   </section>
 
+  <!-- ───── FAQ ───── -->
+  <section id="faq">
+    <div class="container faq-wrap">
+      <p class="section-label reveal fade en">FAQ</p>
+      <p class="section-label reveal fade pl">FAQ</p>
+      <h2 class="section-title reveal d1 en">Frequently asked questions</h2>
+      <h2 class="section-title reveal d1 pl">Często zadawane pytania</h2>
+      <div class="faq-list reveal d2">
+        <details class="faq-item">
+          <summary><span><span class="en">What is Boukay Vital?</span><span class="pl">Czym jest Boukay Vital?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">Boukay Vital is a pre-launch wellness brand building a simple AM/PM supplement system — TANBOU AM for daytime vitality and ZANTRAY PM for evening rest and renewal — rooted in Caribbean botanical heritage and shaped by modern science.</p><p class="pl">Boukay Vital to marka wellness przed premierą, tworząca prosty system suplementów AM/PM — TANBOU AM dla porannej witalności i ZANTRAY PM dla wieczornego odpoczynku i odnowy — zakorzeniony w karaibskim dziedzictwie botanicznym i ukształtowany przez nowoczesną naukę.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span><span class="en">Can I buy the products yet?</span><span class="pl">Czy mogę już kupić produkty?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">Not yet. We're in our pre-launch phase. Join the waitlist to get early access and founding-member pricing when we launch.</p><p class="pl">Jeszcze nie. Jesteśmy w fazie przed premierą. Dołącz do listy oczekujących, aby uzyskać wczesny dostęp i ceny dla członków założycieli, gdy wystartujemy.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span><span class="en">What's in the products?</span><span class="pl">Co zawierają produkty?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">TANBOU AM combines botanicals like Moringa, Panax Ginseng and Acerola with zinc, selenium and B vitamins. ZANTRAY PM blends calming botanicals like Chamomile, Lemon Balm and Passionflower with Magnesium Glycinate and Vitamins D3 + K2. Full ingredient lists are on this page.</p><p class="pl">TANBOU AM łączy rośliny takie jak Moringa, Żeń-szeń Panax i Acerola z cynkiem, selenem i witaminami z grupy B. ZANTRAY PM łączy kojące rośliny, takie jak Rumianek, Melisa i Męczennica, z Glicynianem Magnezu oraz witaminami D3 + K2. Pełne listy składników znajdują się na tej stronie.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span><span class="en">Are the products safe and regulated?</span><span class="pl">Czy produkty są bezpieczne i regulowane?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">Our formulas are written to align with EFSA and EU food-supplement rules and are reviewed by qualified experts for safety and compliance. Boukay Vital is a food supplement, not a medicine.</p><p class="pl">Nasze formuły są napisane zgodnie z zasadami EFSA i przepisami UE dotyczącymi suplementów diety oraz sprawdzane przez wykwalifikowanych ekspertów pod kątem bezpieczeństwa i zgodności. Boukay Vital jest suplementem diety, a nie lekiem.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span><span class="en">Who is behind Boukay Vital?</span><span class="pl">Kto stoi za Boukay Vital?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">Boukay Vital was founded by Emmanuel Cherestal and Yotlaire Guillou, who grew up together in Haiti and share a mission to make prevention-focused wellness part of everyday life.</p><p class="pl">Boukay Vital zostało założone przez Emmanuela Cherestala i Yotlaire'a Guillou, którzy dorastali razem na Haiti i dzielą misję uczynienia profilaktycznego wellness częścią codziennego życia.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span><span class="en">When and where are you launching?</span><span class="pl">Kiedy i gdzie startujecie?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">We're preparing a founding pilot in Poland. Join the waitlist to be the first to know.</p><p class="pl">Przygotowujemy pilotaż założycielski w Polsce. Dołącz do listy oczekujących, aby dowiedzieć się jako pierwszy.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary><span><span class="en">How can partners or advisors get in touch?</span><span class="pl">Jak partnerzy lub doradcy mogą się skontaktować?</span></span><span class="faq-plus"></span></summary>
+          <div class="faq-a"><p class="en">Email us at hello@bookayvital.com — we welcome conversations with potential partners, suppliers, and advisors.</p><p class="pl">Napisz do nas na hello@bookayvital.com — chętnie rozmawiamy z potencjalnymi partnerami, dostawcami i doradcami.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── UPDATES ───── -->
+  <section id="updates">
+    <div class="container">
+      <p class="section-label reveal fade en">Updates</p>
+      <p class="section-label reveal fade pl">Aktualności</p>
+      <h2 class="section-title reveal d1 en">Latest updates</h2>
+      <h2 class="section-title reveal d1 pl">Najnowsze informacje</h2>
+      <div class="timeline reveal d2">
+        <div class="tl-entry">
+          <div class="tl-date en">June 2026</div><div class="tl-date pl">Czerwiec 2026</div>
+          <h3 class="en">Pilot preparation underway</h3><h3 class="pl">Trwają przygotowania do pilotażu</h3>
+          <p class="en">We're finalizing our founding pilot in Poland and beginning manufacturer conversations.</p>
+          <p class="pl">Finalizujemy nasz pilotaż założycielski w Polsce i rozpoczynamy rozmowy z producentami.</p>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-date en">June 2026</div><div class="tl-date pl">Czerwiec 2026</div>
+          <h3 class="en">Waitlist open</h3><h3 class="pl">Lista oczekujących otwarta</h3>
+          <p class="en">Early access registration is now live. Join to secure founding-member pricing.</p>
+          <p class="pl">Rejestracja wczesnego dostępu jest już dostępna. Dołącz, aby zapewnić sobie ceny dla członków założycieli.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ───── WAITLIST ───── -->
   <section id="waitlist">
     <div class="container">
@@ -801,23 +1007,60 @@
 
       <div class="reveal d3">
         <form class="waitlist-form" action="https://formspree.io/f/mzdqgoal" method="POST" onsubmit="handleSubmit(event,'footer-success')">
+          <input type="hidden" name="form" value="waitlist" />
           <input type="email" name="email" id="footer-email" placeholder="your@email.com" required />
           <button type="submit"><span class="en">Join the Waitlist</span><span class="pl">Dołącz do Listy</span></button>
+          <label class="consent consent-wl"><input type="checkbox" name="consent" required /><span class="en">I agree to receive emails from Boukay Vital and accept the <a href="#" onclick="openPrivacy(event)">Privacy Policy</a>.</span><span class="pl">Wyrażam zgodę na otrzymywanie e-maili od Boukay Vital i akceptuję <a href="#" onclick="openPrivacy(event)">Politykę Prywatności</a>.</span></label>
         </form>
         <div class="form-success" id="footer-success">
           ✦ <span class="en">You're on the list. We'll be in touch before launch.</span>
           <span class="pl">Jesteś na liście. Odezwiemy się przed premierą.</span>
         </div>
-        <p class="form-note en">No spam. Early access only. Unsubscribe anytime.</p>
-        <p class="form-note pl">Zero spamu. Tylko wczesny dostęp. Rezygnacja w każdej chwili.</p>
+        <p class="form-note en">Early access only. Unsubscribe anytime.</p>
+        <p class="form-note pl">Tylko wczesny dostęp. Rezygnacja w każdej chwili.</p>
       </div>
 
       <div class="perks-row reveal d4">
         <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span><span class="en">Founding Member Price</span><span class="pl">Cena Członka Założyciela</span></div>
         <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-box"/></svg></span><span class="en">First Access to Pilot</span><span class="pl">Pierwszy Dostęp do Pilotażu</span></div>
         <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></span><span class="en">Exclusive Origin Story</span><span class="pl">Ekskluzywna Historia Marki</span></div>
-        <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span class="en">No spam. Ever.</span><span class="pl">Zero spamu. Nigdy.</span></div>
+        <div class="perk"><span class="perk-icon"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span class="en">Privacy-first. Always.</span><span class="pl">Prywatność przede wszystkim. Zawsze.</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ───── CONTACT ───── -->
+  <section id="contact">
+    <div class="container contact-wrap">
+      <p class="section-label reveal fade en">Contact</p>
+      <p class="section-label reveal fade pl">Kontakt</p>
+      <h2 class="section-title reveal d1 en">Get in touch</h2>
+      <h2 class="section-title reveal d1 pl">Skontaktuj się</h2>
+      <p class="section-body reveal d2 en">Whether you're a potential partner, advisor, supplier, or just want to learn more about Boukay Vital — we'd love to hear from you.</p>
+      <p class="section-body reveal d2 pl">Niezależnie od tego, czy jesteś potencjalnym partnerem, doradcą, dostawcą, czy po prostu chcesz dowiedzieć się więcej o Boukay Vital — chętnie Cię wysłuchamy.</p>
+      <a class="contact-email reveal d2" href="mailto:hello@bookayvital.com">hello@bookayvital.com</a>
+
+      <form class="contact-form reveal d3" action="https://formspree.io/f/mzdqgoal" method="POST" onsubmit="handleSubmit(event,'contact-success')">
+        <input type="hidden" name="_subject" value="New Boukay Vital contact message" />
+        <input type="hidden" name="form" value="contact" />
+        <div class="cf-row">
+          <label class="cf-field"><span class="en">Name</span><span class="pl">Imię</span><input type="text" name="name" required /></label>
+          <label class="cf-field"><span class="en">Email</span><span class="pl">E-mail</span><input type="email" name="email" required /></label>
+        </div>
+        <label class="cf-field"><span class="en">Company / Role (optional)</span><span class="pl">Firma / Rola (opcjonalnie)</span><input type="text" name="company" /></label>
+        <label class="cf-field"><span class="en">Message</span><span class="pl">Wiadomość</span><textarea name="message" rows="5" required></textarea></label>
+        <label class="consent"><input type="checkbox" name="consent" required /><span class="en">I agree to receive emails from Boukay Vital and accept the <a href="#" onclick="openPrivacy(event)">Privacy Policy</a>.</span><span class="pl">Wyrażam zgodę na otrzymywanie e-maili od Boukay Vital i akceptuję <a href="#" onclick="openPrivacy(event)">Politykę Prywatności</a>.</span></label>
+        <button type="submit" class="btn btn-gold"><span class="en">Send Message</span><span class="pl">Wyślij wiadomość</span></button>
+      </form>
+      <div class="form-success" id="contact-success">
+        <span class="en">Thank you — your message has been sent. We'll be in touch.</span>
+        <span class="pl">Dziękujemy — Twoja wiadomość została wysłana. Odezwiemy się.</span>
+      </div>
+
+      <p class="contact-meta reveal d3">
+        <span class="en">Based in Poland · Caribbean botanical heritage · Founded by Emmanuel Cherestal &amp; Yotlaire Guillou</span>
+        <span class="pl">Z siedzibą w Polsce · Karaibskie dziedzictwo botaniczne · Założone przez Emmanuela Cherestala i Yotlaire'a Guillou</span>
+      </p>
     </div>
   </section>
 
@@ -841,7 +1084,13 @@
         <a href="#story"><span class="en">Story</span><span class="pl">Historia</span></a>
         <a href="#products"><span class="en">Products</span><span class="pl">Produkty</span></a>
         <a href="#trust"><span class="en">Standards</span><span class="pl">Standardy</span></a>
-        <a href="#waitlist"><span class="en">Waitlist</span><span class="pl">Lista</span></a>
+        <a href="#status"><span class="en">Status</span><span class="pl">Status</span></a>
+        <a href="#how"><span class="en">Ritual</span><span class="pl">Rytuał</span></a>
+        <a href="#faq"><span class="en">FAQ</span><span class="pl">FAQ</span></a>
+        <a href="#updates"><span class="en">Updates</span><span class="pl">Aktualności</span></a>
+        <a href="#contact"><span class="en">Contact</span><span class="pl">Kontakt</span></a>
+        <a href="#" onclick="openPrivacy(event)"><span class="en">Privacy Policy</span><span class="pl">Polityka Prywatności</span></a>
+        <a href="#"><span class="en">Terms</span><span class="pl">Regulamin</span></a>
         <a href="mailto:hello@bookayvital.com">hello@bookayvital.com</a>
       </div>
       <div class="footer-copy">© 2025 Boukay Vital. <span class="en">All rights reserved.</span><span class="pl">Wszelkie prawa zastrzeżone.</span></div>
@@ -925,14 +1174,15 @@
       window.handleSubmit = async function (e, successId) {
         e.preventDefault();
         var form = e.target;
-        var input = form.querySelector('input[type="email"]');
-        var button = form.querySelector('button');
+        var button = form.querySelector('button[type="submit"]') || form.querySelector('button');
         button.disabled = true; button.style.opacity = '0.6';
         try {
+          var data = {};
+          new FormData(form).forEach(function (v, k) { data[k] = v; });
           var response = await fetch('https://formspree.io/f/mzdqgoal', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ email: input.value })
+            body: JSON.stringify(data)
           });
           if (response.ok) {
             form.style.display = 'none';
@@ -947,8 +1197,54 @@
           alert('Something went wrong. Please try again.');
         }
       };
+
+      /* ── Privacy modal ── */
+      var pm = document.getElementById('privacy-modal');
+      window.openPrivacy = function (e) { if (e) e.preventDefault(); if (pm) { pm.classList.add('open'); pm.setAttribute('aria-hidden', 'false'); } };
+      window.closePrivacy = function () { if (pm) { pm.classList.remove('open'); pm.setAttribute('aria-hidden', 'true'); } };
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') window.closePrivacy(); });
     })();
   </script>
+
+  <!-- ───── PRIVACY MODAL ───── -->
+  <div class="modal-overlay" id="privacy-modal" aria-hidden="true" onclick="if(event.target===this)closePrivacy()">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+      <button class="modal-close" onclick="closePrivacy()" aria-label="Close">&times;</button>
+      <h2 id="privacy-title" class="en">Privacy Policy</h2>
+      <h2 class="pl">Polityka Prywatności</h2>
+      <div class="modal-body">
+        <p class="en">Last updated: June 2026.</p>
+        <p class="pl">Ostatnia aktualizacja: czerwiec 2026.</p>
+
+        <h4 class="en">What we collect</h4><h4 class="pl">Jakie dane zbieramy</h4>
+        <p class="en">When you join our waitlist or use our contact form, we collect your name and email address, and any details you choose to share (such as company or role).</p>
+        <p class="pl">Gdy dołączasz do listy oczekujących lub korzystasz z formularza kontaktowego, zbieramy Twoje imię i adres e-mail oraz wszelkie informacje, które zdecydujesz się udostępnić (np. firmę lub rolę).</p>
+
+        <h4 class="en">Why we collect it</h4><h4 class="pl">Dlaczego je zbieramy</h4>
+        <p class="en">To contact you about Boukay Vital — early access, founding-member pricing, and updates before launch. We process this data on the basis of your consent.</p>
+        <p class="pl">Aby kontaktować się z Tobą w sprawie Boukay Vital — wczesny dostęp, ceny dla członków założycieli i informacje przed premierą. Przetwarzamy te dane na podstawie Twojej zgody.</p>
+
+        <h4 class="en">How it is handled</h4><h4 class="pl">Jak są przetwarzane</h4>
+        <p class="en">Your data is stored securely through our form provider (Formspree) and our email tools. We never sell or rent your personal data to third parties.</p>
+        <p class="pl">Twoje dane są przechowywane bezpiecznie za pośrednictwem naszego dostawcy formularzy (Formspree) i naszych narzędzi e-mail. Nigdy nie sprzedajemy ani nie wynajmujemy Twoich danych osobowych podmiotom trzecim.</p>
+
+        <h4 class="en">How long we keep it</h4><h4 class="pl">Jak długo je przechowujemy</h4>
+        <p class="en">Only as long as needed for the purpose above, or until you ask us to delete it.</p>
+        <p class="pl">Tylko tak długo, jak jest to potrzebne do powyższego celu, lub do momentu, gdy poprosisz o ich usunięcie.</p>
+
+        <h4 class="en">Your rights (GDPR / RODO)</h4><h4 class="pl">Twoje prawa (RODO)</h4>
+        <p class="en">You can access, correct, or delete your data, and withdraw consent at any time.</p>
+        <p class="pl">Możesz uzyskać dostęp do swoich danych, poprawić je lub usunąć oraz wycofać zgodę w dowolnym momencie.</p>
+
+        <h4 class="en">Unsubscribe or delete</h4><h4 class="pl">Rezygnacja lub usunięcie</h4>
+        <p class="en">Email <a href="mailto:hello@bookayvital.com">hello@bookayvital.com</a> and we'll remove you promptly.</p>
+        <p class="pl">Napisz na <a href="mailto:hello@bookayvital.com">hello@bookayvital.com</a>, a niezwłocznie usuniemy Twoje dane.</p>
+
+        <p class="en">Boukay Vital is a pre-launch brand based in Poland. This policy aligns with the EU General Data Protection Regulation (GDPR) and Polish data protection law (RODO).</p>
+        <p class="pl">Boukay Vital to marka przed premierą z siedzibą w Polsce. Niniejsza polityka jest zgodna z ogólnym rozporządzeniem UE o ochronie danych (RODO).</p>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
